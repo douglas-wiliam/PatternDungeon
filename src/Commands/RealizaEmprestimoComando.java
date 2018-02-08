@@ -1,7 +1,7 @@
 package Commands;
 
 import Facade.Fachada;
-import Business.Emprestimo;
+import Business.Operations.Emprestimo;
 
 /**
  *
