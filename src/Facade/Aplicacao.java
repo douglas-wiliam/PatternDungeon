@@ -2,7 +2,7 @@ package Facade;
 
 import Commands.Comando;
 import Commands.NoComando;
-import Business.Emprestimo;
+import Business.Operations.Emprestimo;
 import Commands.RealizaEmprestimoComando;
 import java.util.Scanner;
 
