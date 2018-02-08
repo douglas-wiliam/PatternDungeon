@@ -1,9 +1,9 @@
 package Facade;
 
-import Command.Comando;
-import Command.NoComando;
+import Commands.Comando;
+import Commands.NoComando;
 import Business.Emprestimo;
-import Command.RealizaEmprestimoComando;
+import Commands.RealizaEmprestimoComando;
 import java.util.Scanner;
 
 /**
