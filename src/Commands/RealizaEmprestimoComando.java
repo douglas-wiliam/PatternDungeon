@@ -17,7 +17,7 @@ public class RealizaEmprestimoComando implements Comando {
 
     @Override
     public String execute() {
-        return Fachada.realizaEmprestimo(emprestimo.getCodigoUsuario(), emprestimo.getCodigoLivro());
+        return Fachada.realizaEmprestimo(emprestimo);
     }
 
 }
