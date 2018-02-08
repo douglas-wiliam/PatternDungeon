@@ -2,7 +2,7 @@ package Facade;
 
 import java.util.HashMap;
 import java.util.Map;
-import Command.Comando;
+import Commands.Comando;
 
 /**
  *
