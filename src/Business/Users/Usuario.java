@@ -42,6 +42,10 @@ public abstract class Usuario {
         return qtdMaxReservas;
     }
 
+    public Livro getPedidoLivro() {
+        return pedidoLivro;
+    }
+
     public ArrayList<Emprestimo> getEmprestimos() {
         return emprestimos;
     }
