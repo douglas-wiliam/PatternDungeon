@@ -8,6 +8,10 @@ public class Livro {
 
     public int numeroExemplares;
 
+    public Livro(int numeroExemplares) {
+        this.numeroExemplares = numeroExemplares;
+    }
+
     public int getNumeroExemplares() {
         return numeroExemplares;
     }
