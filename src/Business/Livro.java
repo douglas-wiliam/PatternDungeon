@@ -24,6 +24,10 @@ public class Livro {
         return numeroExemplares;
     }
 
+    public ArrayList<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
+
     public void setNumeroExemplares(int numeroExemplares) {
         this.numeroExemplares = numeroExemplares;
     }
