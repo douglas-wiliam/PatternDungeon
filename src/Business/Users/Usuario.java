@@ -1,5 +1,6 @@
 package Business.Users;
 
+import Business.Livro;
 import Business.Operations.Emprestimo;
 import Business.Operations.Reserva;
 import Validate.Checker;
@@ -16,6 +17,7 @@ public abstract class Usuario {
     protected int periodoEmprestimo;
     protected int qtdMaxEmprestimos;
     protected int qtdMaxReservas;
+    protected Livro pedidoLivro;
     protected ArrayList<Emprestimo> emprestimos;
     protected ArrayList<Reserva> reservas;
     protected ArrayList<Checker> checkers;
@@ -62,5 +64,9 @@ public abstract class Usuario {
 
     public void addCheckers(Checker checker) {
         checkers.add(checker);
+    }
+
+    public void setPedidoLivro(Livro pedidoLivro) {
+        this.pedidoLivro = pedidoLivro;
     }
 }
