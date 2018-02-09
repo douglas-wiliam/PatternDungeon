@@ -4,7 +4,7 @@ package Business.Operations;
  *
  * @author douglas
  */
-public class PedidoEmprestimo {
+public class PedidoEmprestimo implements Pedido{
 
     String codigoUsuario;
     String codigoLivro;
