@@ -15,6 +15,7 @@ public class Emprestimo {
     public Emprestimo(String codigoUsuario, String codigoLivro) {
         this.codigoUsuario = codigoUsuario;
         this.codigoLivro = codigoLivro;
+        status = "aberto";
     }
 
     public String getCodigoUsuario() {
