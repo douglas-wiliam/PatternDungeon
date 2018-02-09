@@ -19,7 +19,7 @@ public class Aluno extends Usuario {
         reservas = new ArrayList();
         checkers = new ArrayList();
 
-        checkers.add(new ExemplarDisponivelChecker());
+        checkers.add(new ExemplarDisponivelChecker(this));
 
     }
 }
