@@ -1,6 +1,7 @@
 package Facade;
 
 import Business.Biblioteca;
+import Business.Livro;
 import Business.Operations.Emprestimo;
 import Business.Orders.Pedido;
 import Business.Users.Usuario;
@@ -27,6 +28,7 @@ public class Fachada {
     public static String realizaEmprestimo(Pedido pedidoEmprestimo) {
         // Supondo que os usuarios sejam validos
         Usuario usuario = Biblioteca.buscaUsuario(pedidoEmprestimo.getCodigoUsuario());
+        Livro livro = Biblioteca.buscaLivro(pedidoEmprestimo.getCodigoLivro());
         Emprestimo emprestimo;
         
         usuario.setPedido(pedidoEmprestimo);
@@ -42,7 +44,7 @@ public class Fachada {
         usuario.setPedido(null);
         emprestimo = new Emprestimo(pedidoEmprestimo.getCodigoUsuario(), pedidoEmprestimo.getCodigoLivro());
         usuario.addEmprestimo(emprestimo);
-        Biblioteca.addEmprestimo(emprestimo);
+        livro.addEmprestimo(emprestimo);
         return "Empréstimo realizado com sucesso";
     }
 }
