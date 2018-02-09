@@ -1,8 +1,8 @@
 package Business.Users;
 
 import Business.Operations.Emprestimo;
-import Business.Operations.Pedido;
-import Business.Operations.PedidoEmprestimo;
+import Business.Orders.Pedido;
+import Business.Orders.PedidoEmprestimo;
 import Business.Operations.Reserva;
 import Validate.Checker;
 import java.util.ArrayList;

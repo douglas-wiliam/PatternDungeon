@@ -2,7 +2,7 @@ package Validate;
 
 import Business.Biblioteca;
 import Business.Livro;
-import Business.Operations.Pedido;
+import Business.Orders.Pedido;
 import Business.Users.Usuario;
 
 /**

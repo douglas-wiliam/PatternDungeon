@@ -1,6 +1,6 @@
 package Commands;
 
-import Business.Operations.Pedido;
+import Business.Orders.Pedido;
 import Facade.Fachada;
 
 /**

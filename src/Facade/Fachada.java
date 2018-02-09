@@ -2,7 +2,7 @@ package Facade;
 
 import Business.Biblioteca;
 import Business.Operations.Emprestimo;
-import Business.Operations.Pedido;
+import Business.Orders.Pedido;
 import Business.Users.Usuario;
 import Validate.Checker;
 
