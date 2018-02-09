@@ -1,7 +1,7 @@
 package Commands;
 
 import Facade.Fachada;
-import Business.Operations.Emprestimo;
+import Business.Operations.PedidoEmprestimo;
 
 /**
  *
@@ -9,15 +9,15 @@ import Business.Operations.Emprestimo;
  */
 public class RealizaEmprestimoComando implements Comando {
 
-    private Emprestimo emprestimo;
+    private PedidoEmprestimo pedidoEmprestimo;
 
-    public RealizaEmprestimoComando(Emprestimo emprestimo) {
-        this.emprestimo = emprestimo;
+    public RealizaEmprestimoComando(PedidoEmprestimo pedidoEmprestimo) {
+        this.pedidoEmprestimo = pedidoEmprestimo;
     }
 
     @Override
     public String execute() {
-        return Fachada.realizaEmprestimo(emprestimo);
+        return Fachada.realizaEmprestimo(pedidoEmprestimo);
     }
 
 }
