@@ -14,10 +14,12 @@ public class PedidoEmprestimo implements Pedido{
         this.codigoLivro = codigoLivro;
     }
 
+    @Override
     public String getCodigoUsuario() {
         return codigoUsuario;
     }
 
+    @Override
     public String getCodigoLivro() {
         return codigoLivro;
     }
