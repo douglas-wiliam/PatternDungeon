@@ -11,6 +11,7 @@ public class Biblioteca {
 
     private static Biblioteca uniqueInstance;
     private static ArrayList<Usuario> usuarios;
+    private static ArrayList<Livro> livros;
 
     private Biblioteca() {
 
@@ -34,6 +35,10 @@ public class Biblioteca {
 
     public static void addUsuario(Usuario usuario) {
         usuarios.add(usuario);
+    }
+
+    public static void addLivro(Livro livro) {
+        livros.add(livro);
     }
 
 }
