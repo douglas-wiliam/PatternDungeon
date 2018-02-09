@@ -9,26 +9,32 @@ import java.util.ArrayList;
  */
 public class Livro {
 
-    public int numeroExemplares;
-    private static ArrayList<Emprestimo> emprestimos;
+    protected String codigo;
+    private int numeroExemplares;
+    private ArrayList<Exemplar> exemplares;
 
-    public Livro(int numeroExemplares) {
-        this.numeroExemplares = numeroExemplares;
+    public Livro(String codigo) {
+        this.codigo = codigo;
+        numeroExemplares = 0;
     }
 
-    public void addEmprestimo(Emprestimo emprestimo) {
-        emprestimos.add(emprestimo);
+    public void addExemplar(Exemplar exemplar) {
+        exemplares.add(exemplar);
+        numeroExemplares++;
+    }
+
+    public void removeExemplar(Exemplar exemplar) {
+        if (exemplares.contains(exemplar)) {
+            exemplares.remove(exemplar);
+            numeroExemplares--;
+        }
     }
 
     public int getNumeroExemplares() {
         return numeroExemplares;
     }
 
-    public ArrayList<Emprestimo> getEmprestimos() {
-        return emprestimos;
-    }
-
-    public void setNumeroExemplares(int numeroExemplares) {
-        this.numeroExemplares = numeroExemplares;
+    public String getCodigo() {
+        return codigo;
     }
 }
