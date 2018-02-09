@@ -1,7 +1,7 @@
 package Commands;
 
+import Business.Operations.Pedido;
 import Facade.Fachada;
-import Business.Operations.PedidoEmprestimo;
 
 /**
  *
@@ -9,9 +9,9 @@ import Business.Operations.PedidoEmprestimo;
  */
 public class RealizaEmprestimoComando implements Comando {
 
-    private PedidoEmprestimo pedidoEmprestimo;
+    private Pedido pedidoEmprestimo;
 
-    public RealizaEmprestimoComando(PedidoEmprestimo pedidoEmprestimo) {
+    public RealizaEmprestimoComando(Pedido pedidoEmprestimo) {
         this.pedidoEmprestimo = pedidoEmprestimo;
     }
 

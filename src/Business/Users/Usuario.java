@@ -1,6 +1,7 @@
 package Business.Users;
 
 import Business.Operations.Emprestimo;
+import Business.Operations.Pedido;
 import Business.Operations.PedidoEmprestimo;
 import Business.Operations.Reserva;
 import Validate.Checker;
@@ -17,7 +18,7 @@ public abstract class Usuario {
     protected int periodoEmprestimo;
     protected int qtdMaxEmprestimos;
     protected int qtdMaxReservas;
-    protected PedidoEmprestimo pedidoEmprestimo;
+    protected Pedido pedido;
     protected ArrayList<Emprestimo> emprestimos;
     protected ArrayList<Reserva> reservas;
     protected ArrayList<Checker> checkers;
@@ -42,8 +43,8 @@ public abstract class Usuario {
         return qtdMaxReservas;
     }
 
-    public PedidoEmprestimo getPedidoEmprestimo() {
-        return pedidoEmprestimo;
+    public Pedido getPedido() {
+        return pedido;
     }
 
     public ArrayList<Emprestimo> getEmprestimos() {
@@ -70,7 +71,7 @@ public abstract class Usuario {
         checkers.add(checker);
     }
 
-    public void setPedidoEmprestimo(PedidoEmprestimo pedidoEmprestimo) {
-        this.pedidoEmprestimo = pedidoEmprestimo;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 }
