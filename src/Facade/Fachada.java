@@ -30,7 +30,7 @@ public class Fachada {
         Usuario usuario = Biblioteca.buscaUsuario(pedidoEmprestimo.getCodigoUsuario());
         Livro livro = Biblioteca.buscaLivro(pedidoEmprestimo.getCodigoLivro());
         Emprestimo emprestimo;
-        
+
         usuario.setPedido(pedidoEmprestimo);
 
         for (Checker c : usuario.getCheckers()) {
@@ -44,7 +44,6 @@ public class Fachada {
         usuario.setPedido(null);
         emprestimo = new Emprestimo(pedidoEmprestimo.getCodigoUsuario(), pedidoEmprestimo.getCodigoLivro());
         usuario.addEmprestimo(emprestimo);
-        livro.addEmprestimo(emprestimo);
         return "Empréstimo realizado com sucesso";
     }
 }
