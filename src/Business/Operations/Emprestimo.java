@@ -24,7 +24,7 @@ public class Emprestimo {
         return codigoLivro;
     }
 
-    public String getdataCriacao() {
+    public String getDataCriacao() {
         return dataCriacao;
     }
 
