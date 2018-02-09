@@ -32,4 +32,12 @@ public class Emprestimo {
         return dataDevolucao;
     }
 
+    public void setdataCriacao(String dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public void setDataDevolucao(String dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
+    }
+
 }
