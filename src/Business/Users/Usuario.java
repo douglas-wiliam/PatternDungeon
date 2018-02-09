@@ -1,6 +1,5 @@
 package Business.Users;
 
-import Business.Livro;
 import Business.Operations.Emprestimo;
 import Business.Operations.Reserva;
 import Validate.Checker;
