@@ -10,6 +10,7 @@ public class Emprestimo {
     String codigoLivro;
     String dataCriacao;
     String dataDevolucao;
+    String status;
 
     public Emprestimo(String codigoUsuario, String codigoLivro) {
         this.codigoUsuario = codigoUsuario;
@@ -32,12 +33,20 @@ public class Emprestimo {
         return dataDevolucao;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public void setDataCriacao(String dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
 
     public void setDataDevolucao(String dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }
