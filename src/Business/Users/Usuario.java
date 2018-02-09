@@ -17,7 +17,7 @@ public abstract class Usuario {
     protected int periodoEmprestimo;
     protected int qtdMaxEmprestimos;
     protected int qtdMaxReservas;
-    protected Livro pedidoLivro;
+    protected Emprestimo pedidoEmprestimo;
     protected ArrayList<Emprestimo> emprestimos;
     protected ArrayList<Reserva> reservas;
     protected ArrayList<Checker> checkers;
@@ -42,8 +42,8 @@ public abstract class Usuario {
         return qtdMaxReservas;
     }
 
-    public Livro getPedidoLivro() {
-        return pedidoLivro;
+    public Emprestimo getPedidoEmprestimo() {
+        return pedidoEmprestimo;
     }
 
     public ArrayList<Emprestimo> getEmprestimos() {
@@ -70,7 +70,7 @@ public abstract class Usuario {
         checkers.add(checker);
     }
 
-    public void setPedidoLivro(Livro pedidoLivro) {
-        this.pedidoLivro = pedidoLivro;
+    public void setPedidoEmprestimo(Emprestimo pedidoEmprestimo) {
+        this.pedidoEmprestimo = pedidoEmprestimo;
     }
 }
