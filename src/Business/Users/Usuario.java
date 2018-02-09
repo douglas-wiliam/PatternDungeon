@@ -1,6 +1,8 @@
 package Business.Users;
 
-import Business.Emprestimo;
+import Business.Operations.Emprestimo;
+import Business.Operations.Reserva;
+import Validate.Checker;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +14,11 @@ public abstract class Usuario {
     protected String nome;
     protected String codigo;
     protected int periodoEmprestimo;
+    protected int qtdMaxEmprestimos;
+    protected int qtdMaxReservas;
     protected ArrayList<Emprestimo> emprestimos;
+    protected ArrayList<Reserva> reservas;
+    protected ArrayList<Checker> checkers;
 
     public String getNome() {
         return nome;
@@ -26,16 +32,35 @@ public abstract class Usuario {
         return periodoEmprestimo;
     }
 
+    public int getQtdMaxEmprestimos() {
+        return qtdMaxEmprestimos;
+    }
+
+    public int getQtdMaxReservas() {
+        return qtdMaxReservas;
+    }
+
     public ArrayList<Emprestimo> getEmprestimos() {
         return emprestimos;
     }
 
-    public void setPeriodoEmprestimo(int periodoEmprestimo) {
-        this.periodoEmprestimo = periodoEmprestimo;
+    public ArrayList<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public ArrayList<Checker> getCheckers() {
+        return checkers;
     }
 
     public void addEmprestimo(Emprestimo emprestimo) {
         emprestimos.add(emprestimo);
     }
 
+    public void addReserva(Reserva reserva) {
+        reservas.add(reserva);
+    }
+
+    public void addCheckers(Checker checker) {
+        checkers.add(checker);
+    }
 }
