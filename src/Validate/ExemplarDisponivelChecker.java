@@ -26,13 +26,10 @@ public class ExemplarDisponivelChecker implements Checker {
         pedido = usuario.getPedido();
         Livro livro = Biblioteca.buscaLivro(pedido.getCodigoLivro());
 
-        for (Exemplar e : livro.getExemplares()) {
-            if ("disponivel".equals(e.getStatus())) {
-                return;
-            }
+        if (livro.getExemplarDisponivel() == null) {
+            log = "Sem exemplares disponíveis na Biblioteca";
         }
 
-        log = "Sem exemplares disponíveis na Biblioteca";
     }
 
     @Override
