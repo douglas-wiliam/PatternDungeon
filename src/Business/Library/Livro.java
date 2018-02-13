@@ -50,4 +50,13 @@ public class Livro {
     public ArrayList<Emprestimo> getEmprestimos() {
         return emprestimos;
     }
+
+    public Exemplar getExemplarDisponivel() {
+        for (Exemplar e : exemplares) {
+            if ("disponivel".equals(e.getStatus())) {
+                return e;
+            }
+        }
+        return null;
+    }
 }
