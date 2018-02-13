@@ -1,29 +1,34 @@
 package Business.Operations;
 
+import Business.Library.Exemplar;
+import Business.Users.Usuario;
+
 /**
  *
  * @author douglas
  */
 public class Emprestimo {
 
-    String codigoUsuario;
-    String codigoLivro;
+    Usuario usuario;
+    Exemplar exemplar;
     String dataCriacao;
     String dataDevolucao;
     String status;
 
-    public Emprestimo(String codigoUsuario, String codigoLivro) {
-        this.codigoUsuario = codigoUsuario;
-        this.codigoLivro = codigoLivro;
-        status = "aberto";
+    public Emprestimo(Usuario usuario, Exemplar exemplar) {
+        this.usuario = usuario;
+        this.exemplar = exemplar;
+        dataCriacao = "";
+        dataDevolucao = "";
+        status = "emcurso";  // "emcurso" ou "finalizado"
     }
 
-    public String getCodigoUsuario() {
-        return codigoUsuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public String getCodigoLivro() {
-        return codigoLivro;
+    public Exemplar getLivro() {
+        return exemplar;
     }
 
     public String getDataCriacao() {
