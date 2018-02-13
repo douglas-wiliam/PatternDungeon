@@ -26,11 +26,21 @@ public class Biblioteca {
     }
 
     public static Usuario buscaUsuario(String codigoUsuario) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        for (Usuario u : usuarios) {
+            if (u.getCodigo().equals(codigoUsuario)) {
+                return u;
+            }
+        }
+        return null;
     }
 
     public static Livro buscaLivro(String codigoLivro) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        for (Livro l : livros) {
+            if (l.getCodigo().equals(codigoLivro)) {
+                return l;
+            }
+        }
+        return null;
     }
 
     public static void addUsuario(Usuario usuario) {
