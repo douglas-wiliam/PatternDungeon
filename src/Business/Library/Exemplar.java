@@ -10,8 +10,8 @@ import java.util.ArrayList;
  */
 public class Exemplar extends Livro {
 
-    private static ArrayList<Emprestimo> emprestimos;
-    private static ArrayList<Reserva> reservas;
+    private ArrayList<Emprestimo> emprestimos;
+    private ArrayList<Reserva> reservas;
 
     public Exemplar(String codigo) {
         super(codigo);
