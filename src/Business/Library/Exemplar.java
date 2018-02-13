@@ -25,10 +25,6 @@ public class Exemplar extends Livro {
         }
     }
 
-    public ArrayList<Emprestimo> getEmprestimos() {
-        return emprestimos;
-    }
-
     public void addReserva(Reserva reserva) {
         if (!reservas.contains(reserva)) {
             reservas.add(reserva);
@@ -40,4 +36,9 @@ public class Exemplar extends Livro {
     public ArrayList<Reserva> getReservas() {
         return reservas;
     }
+
+    public ArrayList<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
+
 }
