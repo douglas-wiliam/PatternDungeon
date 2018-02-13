@@ -1,8 +1,6 @@
 package Business.Library;
 
 import Business.Operations.Emprestimo;
-import Business.Operations.Reserva;
-import java.util.ArrayList;
 
 /**
  *
@@ -10,27 +8,28 @@ import java.util.ArrayList;
  */
 public class Exemplar extends Livro {
 
-    private ArrayList<Emprestimo> emprestimos;
-    private ArrayList<Reserva> reservas;
+    private String status; // "disponivel" ou "emprestado"
+    private Emprestimo emprestimo;  // O emprestimo vinculado
 
     public Exemplar(String codigo) {
         super(codigo);
+        status = "disponivel";
     }
 
-    public void addEmprestimo(Emprestimo emprestimo) {
-        emprestimos.add(emprestimo);
+    public String getStatus() {
+        return status;
     }
 
-    public void addReserva(Reserva reserva) {
-        reservas.add(reserva);
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public ArrayList<Reserva> getReservas() {
-        return reservas;
+    public Emprestimo getEmprestimo() {
+        return emprestimo;
     }
 
-    public ArrayList<Emprestimo> getEmprestimos() {
-        return emprestimos;
+    public void setEmprestimo(Emprestimo emprestimo) {
+        this.emprestimo = emprestimo;
     }
 
 }
