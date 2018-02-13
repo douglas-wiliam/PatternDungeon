@@ -49,8 +49,9 @@ public class Fachada {
         }
 
         usuario.setPedido(null);
-        emprestimo = new Emprestimo(pedidoEmprestimo.getCodigoUsuario(), pedidoEmprestimo.getCodigoLivro());
+        emprestimo = new Emprestimo(usuario, livro.getExemplarDisponivel());
         usuario.addEmprestimo(emprestimo);
+        livro.addEmprestimo(emprestimo);
         return "Empréstimo realizado com sucesso";
     }
 }
