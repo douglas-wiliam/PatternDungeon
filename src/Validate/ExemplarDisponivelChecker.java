@@ -28,7 +28,7 @@ public class ExemplarDisponivelChecker implements Checker {
         if (livro == null) {
             log = "Livro não disponível na Biblioteca";
         } else {
-            if (livro.getNumeroExemplares() == 0) {
+            if (livro.getExemplares().isEmpty()) {
                 log = "Sem exemplares disponíveis na Biblioteca";
             }
         }
