@@ -34,4 +34,8 @@ public class Livro {
     public String getCodigo() {
         return codigo;
     }
+
+    public ArrayList getExemplares() {
+        return exemplares;
+    }
 }
