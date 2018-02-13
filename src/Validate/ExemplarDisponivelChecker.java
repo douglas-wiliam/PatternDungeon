@@ -1,6 +1,7 @@
 package Validate;
 
 import Business.Library.Biblioteca;
+import Business.Library.Exemplar;
 import Business.Library.Livro;
 import Business.Orders.Pedido;
 import Business.Users.Usuario;
@@ -25,13 +26,13 @@ public class ExemplarDisponivelChecker implements Checker {
         pedido = usuario.getPedido();
         Livro livro = Biblioteca.buscaLivro(pedido.getCodigoLivro());
 
-        if (livro == null) {
-            log = "Livro não disponível na Biblioteca";
-        } else {
-            if (livro.getExemplares().isEmpty()) {
-                log = "Sem exemplares disponíveis na Biblioteca";
+        for (Exemplar e : livro.getExemplares()) {
+            if ("disponivel".equals(e.getStatus())) {
+                return;
             }
         }
+
+        log = "Sem exemplares disponíveis na Biblioteca";
     }
 
     @Override
