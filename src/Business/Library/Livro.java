@@ -39,7 +39,7 @@ public class Livro {
         return codigo;
     }
 
-    public ArrayList getExemplares() {
+    public ArrayList<Exemplar> getExemplares() {
         return exemplares;
     }
 
