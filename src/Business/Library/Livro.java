@@ -16,19 +16,11 @@ public class Livro {
     }
 
     public void addExemplar(Exemplar exemplar) {
-        if (!exemplares.contains(exemplar)) {
-            exemplares.add(exemplar);
-        } else {
-            System.out.println("Exemplar já adicionado para este livro");
-        }
+        exemplares.add(exemplar);
     }
 
     public void removeExemplar(Exemplar exemplar) {
-        if (exemplares.contains(exemplar)) {
-            exemplares.remove(exemplar);
-        } else {
-            System.out.println("Não existe exemplar para este livro");
-        }
+        exemplares.remove(exemplar);
     }
 
     public String getCodigo() {
