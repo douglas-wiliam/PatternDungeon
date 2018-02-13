@@ -1,6 +1,5 @@
 package Business.Library;
 
-import Business.Operations.Emprestimo;
 import java.util.ArrayList;
 
 /**
@@ -19,14 +18,20 @@ public class Livro {
     }
 
     public void addExemplar(Exemplar exemplar) {
-        exemplares.add(exemplar);
-        numeroExemplares++;
+        if (!exemplares.contains(exemplar)) {
+            exemplares.add(exemplar);
+            numeroExemplares++;
+        } else {
+            System.out.println("Exemplar já adicionado para este livro");
+        }
     }
 
     public void removeExemplar(Exemplar exemplar) {
         if (exemplares.contains(exemplar)) {
             exemplares.remove(exemplar);
             numeroExemplares--;
+        } else {
+            System.out.println("Não existe exemplar para este livro");
         }
     }
 
