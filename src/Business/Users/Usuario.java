@@ -22,6 +22,18 @@ public abstract class Usuario {
     protected ArrayList<Reserva> reservas;
     protected ArrayList<Checker> checkers;
 
+    public void addEmprestimo(Emprestimo emprestimo) {
+        emprestimos.add(emprestimo);
+    }
+
+    public void addReserva(Reserva reserva) {
+        reservas.add(reserva);
+    }
+
+    public void addChecker(Checker checker) {
+        checkers.add(checker);
+    }
+
     public String getNome() {
         return nome;
     }
@@ -56,18 +68,6 @@ public abstract class Usuario {
 
     public ArrayList<Checker> getCheckers() {
         return checkers;
-    }
-
-    public void addEmprestimo(Emprestimo emprestimo) {
-        emprestimos.add(emprestimo);
-    }
-
-    public void addReserva(Reserva reserva) {
-        reservas.add(reserva);
-    }
-
-    public void addCheckers(Checker checker) {
-        checkers.add(checker);
     }
 
     public void setPedido(Pedido pedido) {
