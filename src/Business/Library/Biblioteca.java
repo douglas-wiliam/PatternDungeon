@@ -41,4 +41,12 @@ public class Biblioteca {
         livros.add(livro);
     }
 
+    public static void removeUsuario(Usuario usuario) {
+        usuarios.remove(usuario);
+    }
+
+    public static void removeLivro(Livro livro) {
+        livros.remove(livro);
+    }
+
 }
