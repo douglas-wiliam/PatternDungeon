@@ -49,4 +49,12 @@ public class Biblioteca {
         livros.remove(livro);
     }
 
+    public static ArrayList getUsuarios() {
+        return usuarios;
+    }
+
+    public static ArrayList getLivros() {
+        return livros;
+    }
+
 }
