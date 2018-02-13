@@ -18,7 +18,11 @@ public class Exemplar extends Livro {
     }
 
     public void addEmprestimo(Emprestimo emprestimo) {
-        emprestimos.add(emprestimo);
+        if (!emprestimos.contains(emprestimo)) {
+            emprestimos.add(emprestimo);
+        } else {
+            System.out.println("Emprestimo já existe para este exemplar");
+        }
     }
 
     public ArrayList<Emprestimo> getEmprestimos() {
@@ -26,7 +30,11 @@ public class Exemplar extends Livro {
     }
 
     public void addReserva(Reserva reserva) {
-        reservas.add(reserva);
+        if (!reservas.contains(reserva)) {
+            reservas.add(reserva);
+        } else {
+            System.out.println("Reserva já existe para este exemplar");
+        }
     }
 
     public ArrayList<Reserva> getReservas() {
