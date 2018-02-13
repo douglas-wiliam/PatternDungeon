@@ -26,10 +26,17 @@ public class Fachada {
     }
 
     public static String realizaEmprestimo(Pedido pedidoEmprestimo) {
-        // Supondo que os usuarios sejam validos
         Usuario usuario = Biblioteca.buscaUsuario(pedidoEmprestimo.getCodigoUsuario());
         Livro livro = Biblioteca.buscaLivro(pedidoEmprestimo.getCodigoLivro());
         Emprestimo emprestimo;
+
+        if (usuario == null) {
+            return "Usuário não existe na Biblioteca";
+        }
+
+        if (livro == null) {
+            return "Livro não existe na Biblioteca";
+        }
 
         usuario.setPedido(pedidoEmprestimo);
 
