@@ -59,11 +59,11 @@ public class Biblioteca {
         livros.remove(livro);
     }
 
-    public static ArrayList getUsuarios() {
+    public static ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
 
-    public static ArrayList getLivros() {
+    public static ArrayList<Livro> getLivros() {
         return livros;
     }
 
