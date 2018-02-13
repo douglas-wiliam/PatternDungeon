@@ -9,7 +9,7 @@ import Facade.Fachada;
  */
 public class RealizaEmprestimoComando implements Comando {
 
-    private Pedido pedidoEmprestimo;
+    private final Pedido pedidoEmprestimo;
 
     public RealizaEmprestimoComando(Pedido pedidoEmprestimo) {
         this.pedidoEmprestimo = pedidoEmprestimo;
