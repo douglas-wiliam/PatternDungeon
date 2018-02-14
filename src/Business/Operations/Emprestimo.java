@@ -2,6 +2,8 @@ package Business.Operations;
 
 import Business.Library.Exemplar;
 import Business.Users.Usuario;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -18,9 +20,13 @@ public class Emprestimo {
     public Emprestimo(Usuario usuario, Exemplar exemplar) {
         this.usuario = usuario;
         this.exemplar = exemplar;
-        dataCriacao = "";
-        dataDevolucao = "";
-        status = "emcurso";  // "emcurso" ou "finalizado"
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataLocal = LocalDate.now();
+        
+        dataCriacao = dtf.format(dataLocal);
+        dataDevolucao = dtf.format(dataLocal.plusDays(usuario.getPeriodoEmprestimo()));
+        status = "emCurso";  // "emCurso" ou "finalizado"
     }
 
     public Usuario getUsuario() {
@@ -41,14 +47,6 @@ public class Emprestimo {
 
     public String getStatus() {
         return status;
-    }
-
-    public void setDataCriacao(String dataCriacao) {
-        this.dataCriacao = dataCriacao;
-    }
-
-    public void setDataDevolucao(String dataDevolucao) {
-        this.dataDevolucao = dataDevolucao;
     }
 
     public void setStatus(String status) {
