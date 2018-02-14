@@ -33,7 +33,7 @@ public class Emprestimo {
         return usuario;
     }
 
-    public Exemplar getLivro() {
+    public Exemplar getExemplar() {
         return exemplar;
     }
 
