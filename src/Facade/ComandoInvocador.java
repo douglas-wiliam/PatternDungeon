@@ -1,7 +1,5 @@
 package Facade;
 
-import java.util.HashMap;
-import java.util.Map;
 import Commands.Comando;
 
 /**
