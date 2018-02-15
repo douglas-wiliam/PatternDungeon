@@ -1,7 +1,6 @@
 package Validate;
 
 import Business.Library.Biblioteca;
-import Business.Library.Exemplar;
 import Business.Library.Livro;
 import Business.Orders.Pedido;
 import Business.Users.Usuario;
