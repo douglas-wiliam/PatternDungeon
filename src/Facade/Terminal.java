@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author douglas, Guilherme
+ * @author douglas, Guilherme e amigo Fábio
  */
 public class Terminal {
 
