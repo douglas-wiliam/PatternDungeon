@@ -24,7 +24,7 @@ public abstract class Usuario {
     protected ArrayList<Reserva> reservas;
 
     public String tomarEmprestado(Livro livro) {
-        return tomarEmprestado.tomarEmprestado(livro);
+        return tomarEmprestado.tomarEmprestado(this, livro);
     }
 
     public String reservar(Livro livro) {
