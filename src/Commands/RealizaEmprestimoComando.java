@@ -9,15 +9,15 @@ import Facade.Fachada;
  */
 public class RealizaEmprestimoComando implements Comando {
 
-    private final Pedido pedidoEmprestimo;
+    private final Pedido pedido;
 
-    public RealizaEmprestimoComando(Pedido pedidoEmprestimo) {
-        this.pedidoEmprestimo = pedidoEmprestimo;
+    public RealizaEmprestimoComando(Pedido pedido) {
+        this.pedido = pedido;
     }
 
     @Override
     public String execute() {
-        return Fachada.realizaEmprestimo(pedidoEmprestimo);
+        return Fachada.realizaEmprestimo(pedido);
     }
 
 }
