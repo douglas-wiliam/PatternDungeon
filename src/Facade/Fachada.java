@@ -22,10 +22,10 @@ public class Fachada {
         }
         return uniqueInstance;
     }
-    
-    public static String realizaEmprestimo(Pedido pedidoEmprestimo) {
-        Usuario usuario = Biblioteca.buscaUsuario(pedidoEmprestimo.getCodigoUsuario());
-        Livro livro = Biblioteca.buscaLivro(pedidoEmprestimo.getCodigoLivro());
+
+    public static String realizaEmprestimo(Pedido pedido) {
+        Usuario usuario = Biblioteca.buscaUsuario(pedido.getCodigoUsuario());
+        Livro livro = Biblioteca.buscaLivro(pedido.getCodigoLivro());
 
         if (usuario == null) {
             return "Usuário não existe na Biblioteca";
@@ -38,9 +38,9 @@ public class Fachada {
         return usuario.tomarEmprestado(livro);
     }
 
-    public static String realizaDevolucao(Pedido pedidoDevolucao) {
-        Usuario usuario = Biblioteca.buscaUsuario(pedidoDevolucao.getCodigoUsuario());
-        Livro livro = Biblioteca.buscaLivro(pedidoDevolucao.getCodigoLivro());
+    public static String realizaDevolucao(Pedido pedido) {
+        Usuario usuario = Biblioteca.buscaUsuario(pedido.getCodigoUsuario());
+        Livro livro = Biblioteca.buscaLivro(pedido.getCodigoLivro());
 
         if (usuario == null) {
             return "Usuário não existe na Biblioteca";
@@ -51,6 +51,22 @@ public class Fachada {
         }
 
         return usuario.devolver(livro);
+
+    }
+
+    public static String realizaReserva(Pedido pedido) {
+        Usuario usuario = Biblioteca.buscaUsuario(pedido.getCodigoUsuario());
+        Livro livro = Biblioteca.buscaLivro(pedido.getCodigoLivro());
+
+        if (usuario == null) {
+            return "Usuário não existe na Biblioteca";
+        }
+
+        if (livro == null) {
+            return "Livro não existe na Biblioteca";
+        }
+
+        return usuario.reservar(livro);
 
     }
 }
