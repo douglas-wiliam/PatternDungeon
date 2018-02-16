@@ -13,23 +13,24 @@ public class Exemplar extends Livro {
 
     public Exemplar(String codigo) {
         super(codigo);
+    }
+
+    public void empresta(Emprestimo emprestimo) {
+        status = "emprestado";
+        this.emprestimo = emprestimo;
+    }
+
+    public void devolve() {
         status = "disponivel";
+        emprestimo = null;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public Emprestimo getEmprestimo() {
         return emprestimo;
-    }
-
-    public void setEmprestimo(Emprestimo emprestimo) {
-        this.emprestimo = emprestimo;
     }
 
 }
