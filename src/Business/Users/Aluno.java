@@ -18,6 +18,5 @@ public class Aluno extends Usuario {
         tomarEmprestado = new AlunoTomarEmprestado();
         emprestimos = new ArrayList();
         reservas = new ArrayList();
-
     }
 }
