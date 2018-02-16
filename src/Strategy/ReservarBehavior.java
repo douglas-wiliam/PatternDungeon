@@ -1,6 +1,7 @@
 package Strategy;
 
 import Business.Library.Livro;
+import Business.Users.Usuario;
 
 /**
  *
@@ -8,5 +9,5 @@ import Business.Library.Livro;
  */
 public interface ReservarBehavior {
 
-    public String reservar(Livro livro);
+    public String reservar(Usuario usuario, Livro livro);
 }

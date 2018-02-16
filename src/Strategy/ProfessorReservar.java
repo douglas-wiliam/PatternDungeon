@@ -1,6 +1,7 @@
 package Strategy;
 
 import Business.Library.Livro;
+import Business.Users.Usuario;
 
 /**
  *
@@ -9,7 +10,7 @@ import Business.Library.Livro;
 public class ProfessorReservar implements ReservarBehavior {
 
     @Override
-    public String reservar(Livro livro) {
+    public String reservar(Usuario usuario, Livro livro) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

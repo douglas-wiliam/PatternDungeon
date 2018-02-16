@@ -28,7 +28,7 @@ public abstract class Usuario {
     }
 
     public String reservar(Livro livro) {
-        return reservar.reservar(livro);
+        return reservar.reservar(this, livro);
     }
 
     public String devolver(Livro livro) {
