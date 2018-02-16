@@ -2,7 +2,7 @@ package Facade;
 
 import Commands.Comando;
 import Commands.NoComando;
-import Business.Orders.PedidoEmprestimo;
+import Business.Orders.Pedido;
 import Commands.RealizaEmprestimoComando;
 import java.util.Scanner;
 
@@ -41,7 +41,7 @@ public class Terminal {
             switch (input[0]) {
 
                 case "emp":
-                    comando = new RealizaEmprestimoComando(new PedidoEmprestimo(input[1], input[2]));
+                    comando = new RealizaEmprestimoComando(new Pedido(input[1], input[2]));
                     break;
 
                 case "res":

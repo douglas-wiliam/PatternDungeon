@@ -4,9 +4,21 @@ package Business.Orders;
  *
  * @author douglas
  */
-public interface Pedido {
+public class Pedido {
 
-    public String getCodigoUsuario();
+    String codigoUsuario;
+    String codigoLivro;
 
-    public String getCodigoLivro();
+    public Pedido(String codigoUsuario, String codigoLivro) {
+        this.codigoUsuario = codigoUsuario;
+        this.codigoLivro = codigoLivro;
+    }
+
+    public String getCodigoUsuario() {
+        return codigoUsuario;
+    }
+
+    public String getCodigoLivro() {
+        return codigoLivro;
+    }
 }
