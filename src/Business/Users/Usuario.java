@@ -31,6 +31,16 @@ public abstract class Usuario {
         return reservar.reservar(livro);
     }
 
+    public String devolver(Livro livro) {
+        for (int i = 0; i < getEmprestimos().size(); i++) {
+            if ((getEmprestimos().get(i) == livro.getEmprestimos().get(i)) && ("emCurso".equals(getEmprestimos().get(i).getStatus()))) {
+                getEmprestimos().get(i).setStatus("finalizado");
+                return "Sucesso em Operação de Devolução";
+            }
+        }
+        return "Insucesso em Operação de Devolução: Não Existe Empréstimo em Aberto para o Livro";
+    }
+
     public void addEmprestimo(Emprestimo emprestimo) {
         emprestimos.add(emprestimo);
     }
