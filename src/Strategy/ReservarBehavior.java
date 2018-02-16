@@ -6,7 +6,7 @@ import Business.Library.Livro;
  *
  * @author douglas
  */
-public interface RealizaOperacao {
+public interface ReservarBehavior {
 
-    public String execute(Livro livro);
+    public String reservar(Livro livro);
 }
