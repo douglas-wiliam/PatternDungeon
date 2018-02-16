@@ -5,7 +5,6 @@ import Business.Library.Livro;
 import Business.Operations.Emprestimo;
 import Business.Orders.Pedido;
 import Business.Users.Usuario;
-import Validate.Checker;
 
 /**
  *
@@ -38,17 +37,7 @@ public class Fachada {
             return "Livro não existe na Biblioteca";
         }
 
-        usuario.setPedido(pedidoEmprestimo);
 
-        for (Checker c : usuario.getCheckers()) {
-            c.check();
-            if (!"".equals(c.getLog())) {
-                usuario.setPedido(null);
-                return c.getLog();
-            }
-        }
-
-        usuario.setPedido(null);
         emprestimo = new Emprestimo(usuario, livro.getExemplarDisponivel());
         usuario.addEmprestimo(emprestimo);
         livro.addEmprestimo(emprestimo);
