@@ -2,7 +2,6 @@ package Facade;
 
 import Business.Library.Biblioteca;
 import Business.Library.Livro;
-import Business.Operations.Emprestimo;
 import Business.Orders.Pedido;
 import Business.Users.Usuario;
 
@@ -27,7 +26,6 @@ public class Fachada {
     public static String realizaEmprestimo(Pedido pedidoEmprestimo) {
         Usuario usuario = Biblioteca.buscaUsuario(pedidoEmprestimo.getCodigoUsuario());
         Livro livro = Biblioteca.buscaLivro(pedidoEmprestimo.getCodigoLivro());
-        Emprestimo emprestimo;
 
         if (usuario == null) {
             return "Usuário não existe na Biblioteca";
@@ -37,10 +35,6 @@ public class Fachada {
             return "Livro não existe na Biblioteca";
         }
 
-
-        emprestimo = new Emprestimo(usuario, livro.getExemplarDisponivel());
-        usuario.addEmprestimo(emprestimo);
-        livro.addEmprestimo(emprestimo);
-        return "Empréstimo realizado com sucesso";
+        return usuario.tomarEmprestado(livro);
     }
 }
