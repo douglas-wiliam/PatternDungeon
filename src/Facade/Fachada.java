@@ -35,7 +35,7 @@ public class Fachada {
             return "Livro não existe na Biblioteca";
         }
 
-        return usuario.tomarEmprestado(livro);
+        return usuario.tomaEmprestado(livro);
     }
 
     public static String realizaDevolucao(Pedido pedido) {
@@ -50,7 +50,7 @@ public class Fachada {
             return "Livro não existe na Biblioteca";
         }
 
-        return usuario.devolver(livro);
+        return usuario.devolve(livro);
 
     }
 
@@ -66,7 +66,7 @@ public class Fachada {
             return "Livro não existe na Biblioteca";
         }
 
-        return usuario.reservar(livro);
+        return usuario.reserva(livro);
 
     }
 }
