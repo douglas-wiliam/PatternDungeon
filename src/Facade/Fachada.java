@@ -22,7 +22,7 @@ public class Fachada {
         }
         return uniqueInstance;
     }
-
+    
     public static String realizaEmprestimo(Pedido pedidoEmprestimo) {
         Usuario usuario = Biblioteca.buscaUsuario(pedidoEmprestimo.getCodigoUsuario());
         Livro livro = Biblioteca.buscaLivro(pedidoEmprestimo.getCodigoLivro());
@@ -36,5 +36,21 @@ public class Fachada {
         }
 
         return usuario.tomarEmprestado(livro);
+    }
+
+    public static String realizaDevolucao(Pedido pedidoDevolucao) {
+        Usuario usuario = Biblioteca.buscaUsuario(pedidoDevolucao.getCodigoUsuario());
+        Livro livro = Biblioteca.buscaLivro(pedidoDevolucao.getCodigoLivro());
+
+        if (usuario == null) {
+            return "Usuário não existe na Biblioteca";
+        }
+
+        if (livro == null) {
+            return "Livro não existe na Biblioteca";
+        }
+
+        return usuario.devolver(livro);
+
     }
 }
