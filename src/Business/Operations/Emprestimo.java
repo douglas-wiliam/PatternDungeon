@@ -37,6 +37,18 @@ public class Emprestimo {
         dataDevolucao = dtf.format(dataLocal);
     }
 
+    public void abreEmprestimo() {
+        registraData();
+        status = "emCurso";
+        exemplar.empresta(this);
+    }
+
+    public void fechaEmprestimo() {
+        atualizaDataDevolucao();
+        status = "finalizado";
+        exemplar.devolve();
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -56,18 +68,4 @@ public class Emprestimo {
     public String getStatus() {
         return status;
     }
-
-    public void setStatus(String status) {
-        if (status.equals("finalizado")) {
-            exemplar.setStatus("disponivel");
-            exemplar.setEmprestimo(null);
-            atualizaDataDevolucao();
-        } else {
-            registraData();
-            exemplar.setStatus("emprestado");
-            exemplar.setEmprestimo(this);
-        }
-        this.status = status;
-    }
-
 }
