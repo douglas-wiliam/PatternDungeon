@@ -3,7 +3,9 @@ package Facade;
 import Commands.Comando;
 import Commands.NoComando;
 import Business.Orders.Pedido;
+import Commands.RealizaDevolucaoComando;
 import Commands.RealizaEmprestimoComando;
+import Commands.RealizaReservaComando;
 import java.util.Scanner;
 
 /**
@@ -45,9 +47,11 @@ public class Terminal {
                     break;
 
                 case "res":
+                    comando = new RealizaReservaComando(new Pedido(input[1], input[2]));
                     break;
 
                 case "dev":
+                    comando = new RealizaDevolucaoComando(new Pedido(input[1], input[2]));
                     break;
 
                 case "obs":
