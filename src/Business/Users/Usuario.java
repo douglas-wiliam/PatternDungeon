@@ -1,7 +1,10 @@
 package Business.Users;
 
+import Business.Library.Livro;
 import Business.Operations.Emprestimo;
 import Business.Operations.Reserva;
+import Strategy.TomarEmprestadoBehavior;
+import Strategy.ReservarBehavior;
 import java.util.ArrayList;
 
 /**
@@ -15,8 +18,18 @@ public abstract class Usuario {
     protected int periodoEmprestimo;
     protected int qtdMaxEmprestimos;
     protected int qtdMaxReservas;
+    protected TomarEmprestadoBehavior tomarEmprestado;
+    protected ReservarBehavior reservar;
     protected ArrayList<Emprestimo> emprestimos;
     protected ArrayList<Reserva> reservas;
+
+    public String tomarEmprestado(Livro livro) {
+        return tomarEmprestado.tomarEmprestado(livro);
+    }
+
+    public String reservar(Livro livro) {
+        return reservar.reservar(livro);
+    }
 
     public void addEmprestimo(Emprestimo emprestimo) {
         emprestimos.add(emprestimo);
