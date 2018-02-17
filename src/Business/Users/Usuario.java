@@ -23,18 +23,18 @@ public abstract class Usuario {
     protected ArrayList<Emprestimo> emprestimos;
     protected ArrayList<Reserva> reservas;
 
-    public String tomarEmprestado(Livro livro) {
+    public String tomaEmprestado(Livro livro) {
         return tomarEmprestado.tomarEmprestado(this, livro);
     }
 
-    public String reservar(Livro livro) {
+    public String reserva(Livro livro) {
         return reservar.reservar(this, livro);
     }
 
-    public String devolver(Livro livro) {
+    public String devolve(Livro livro) {
         for (int i = 0; i < getEmprestimos().size(); i++) {
             if ((getEmprestimos().get(i) == livro.getEmprestimos().get(i)) && ("emCurso".equals(getEmprestimos().get(i).getStatus()))) {
-                getEmprestimos().get(i).setStatus("finalizado");
+                getEmprestimos().get(i).fechaEmprestimo();
                 return "Sucesso em Operação de Devolução";
             }
         }
