@@ -74,6 +74,10 @@ public abstract class Usuario {
         }
         return output;
     }
+    
+    public void notifica(){
+        this.notificacoes += 1;
+    }
 
     public void addEmprestimo(Emprestimo emprestimo) {
         emprestimos.add(emprestimo);
