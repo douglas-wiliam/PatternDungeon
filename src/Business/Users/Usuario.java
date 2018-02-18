@@ -1,7 +1,6 @@
 package Business.Users;
 
 import Business.Library.Livro;
-import Business.Library.Exemplar;
 import Business.Operations.Emprestimo;
 import Business.Operations.Reserva;
 import Strategy.TomarEmprestadoBehavior;
@@ -100,13 +99,5 @@ public abstract class Usuario {
 
     public int getQtdMaxReservas() {
         return qtdMaxReservas;
-    }
-
-    public Emprestimo getEmprestimo(int index) {
-        return emprestimos.get(index);
-    }
-
-    public Reserva getReserva(int index) {
-        return reservas.get(index);
     }
 }
