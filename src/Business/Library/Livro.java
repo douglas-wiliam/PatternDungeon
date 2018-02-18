@@ -46,6 +46,11 @@ public class Livro {
 
     public void addReserva(Reserva reserva) {
         reservas.add(reserva);
+        if (reservas.size() == 2){
+            for (Usuario obs : observadores){
+                obs.notifica();
+            }
+        }
     }
     
     public void addObservador(Usuario usuario){
