@@ -63,7 +63,7 @@ public class Livro {
         return false;
     }
 
-    public boolean temExemplarEmprestado(Emprestimo emprestimo) {
+    public boolean temEmprestimo(Emprestimo emprestimo) {
         for (Exemplar e : exemplares) {
             if (e.getEmprestimo().equals(emprestimo)) {
                 return true;
