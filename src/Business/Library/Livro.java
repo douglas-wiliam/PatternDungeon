@@ -53,7 +53,16 @@ public class Livro {
 
     public Exemplar getExemplarDisponivel() {
         for (Exemplar e : exemplares) {
-            if ("disponivel".equals(e.getStatus())) {
+            if (e.estaDisponivel()) {
+                return e;
+            }
+        }
+        return null;
+    }
+
+    public Exemplar getExemplarEmprestado(Emprestimo emprestimo) {
+        for (Exemplar e : exemplares) {
+            if (e.getEmprestimo().equals(emprestimo)) {
                 return e;
             }
         }
