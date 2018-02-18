@@ -28,12 +28,12 @@ public class Exemplar {
         emprestimo = null;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public boolean estaDisponivel() {
+        return status.equals("disponivel");
     }
 
-    public String getStatus() {
-        return status;
+    public String getCodigo() {
+        return codigo;
     }
 
     public Emprestimo getEmprestimo() {
