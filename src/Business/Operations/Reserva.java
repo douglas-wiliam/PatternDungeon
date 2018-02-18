@@ -10,9 +10,9 @@ import java.time.format.DateTimeFormatter;
  * @author douglas, Guilherme
  */
 public class Reserva {
-    Usuario usuario;
-    Exemplar exemplar;
-    String dataSolicitacao;
+    private final Usuario usuario;
+    private final Exemplar exemplar;
+    private String dataSolicitacao;
     
     public Reserva(Usuario usuario, Exemplar exemplar){
         this.registraData();
