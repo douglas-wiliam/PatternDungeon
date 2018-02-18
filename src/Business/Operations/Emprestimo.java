@@ -49,6 +49,10 @@ public class Emprestimo {
         exemplar.devolve();
     }
 
+    public boolean estaAberto() {
+        return status.equals("emCurso");
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
