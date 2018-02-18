@@ -32,11 +32,14 @@ public abstract class Usuario {
     }
 
     public String devolve(Livro livro) {
+        for (Emprestimo e : emprestimos) {
+            if (livro.getExemplarEmprestado(e) != null) {
+                e.fechaEmprestimo();
+                return "Sucesso em Operação de Devolução";
+            }
+        }
 
-        
-        return "Sucesso em Operação de Devolução";
-
-        //return "Insucesso em Operação de Devolução: Não Existe Empréstimo em Aberto para o Livro";
+        return "Insucesso em Operação de Devolução: Não Existe Empréstimo em Aberto para o Livro";
     }
 
     public void addEmprestimo(Emprestimo emprestimo) {
