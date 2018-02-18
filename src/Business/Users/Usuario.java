@@ -85,9 +85,8 @@ public abstract class Usuario {
         output += "Emprestimos:\n";
         StringBuilder strBuilder = new StringBuilder(output);
         for (Emprestimo e : emprestimos){
-            Exemplar exemplar = e.getExemplar();
             strBuilder.append("\tTitulo: ");
-            strBuilder.append(exemplar.getTitulo());
+            strBuilder.append(e.getTituloExemplar());
             strBuilder.append("\n");
             strBuilder.append("\tData de emprestimo: ");
             strBuilder.append(e.getDataCriacao());
