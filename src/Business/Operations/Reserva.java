@@ -34,6 +34,10 @@ public class Reserva {
         return this.exemplar;
     }
     
+    public String getTituloExemplar(){
+        return this.exemplar.getTitulo();
+    }
+    
     public String getDataSolicitacao(){
         return this.dataSolicitacao;
     }
