@@ -32,13 +32,11 @@ public abstract class Usuario {
     }
 
     public String devolve(Livro livro) {
-        for (int i = 0; i < getEmprestimos().size(); i++) {
-            if ((getEmprestimos().get(i) == livro.getEmprestimos().get(i)) && ("emCurso".equals(getEmprestimos().get(i).getStatus()))) {
-                getEmprestimos().get(i).fechaEmprestimo();
-                return "Sucesso em Operação de Devolução";
-            }
-        }
-        return "Insucesso em Operação de Devolução: Não Existe Empréstimo em Aberto para o Livro";
+
+        
+        return "Sucesso em Operação de Devolução";
+
+        //return "Insucesso em Operação de Devolução: Não Existe Empréstimo em Aberto para o Livro";
     }
 
     public void addEmprestimo(Emprestimo emprestimo) {
@@ -69,12 +67,12 @@ public abstract class Usuario {
         return qtdMaxReservas;
     }
 
-    public ArrayList<Emprestimo> getEmprestimos() {
-        return emprestimos;
+    public Emprestimo getEmprestimo(int index) {
+        return emprestimos.get(index);
     }
 
-    public ArrayList<Reserva> getReservas() {
-        return reservas;
+    public Reserva getReserva(int index) {
+        return reservas.get(index);
     }
 
 }
