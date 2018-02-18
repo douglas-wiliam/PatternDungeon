@@ -68,8 +68,4 @@ public class Emprestimo {
     public String getDataDevolucao() {
         return dataDevolucao;
     }
-
-    public String getStatus() {
-        return status;
-    }
 }
