@@ -63,6 +63,15 @@ public class Livro {
         return false;
     }
 
+    public boolean temExemplarEmprestado(Emprestimo emprestimo) {
+        for (Exemplar e : exemplares) {
+            if (e.getEmprestimo().equals(emprestimo)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String getCodigo() {
         return codigo;
     }
@@ -98,15 +107,6 @@ public class Livro {
     public Exemplar getExemplarDisponivel() {
         for (Exemplar e : exemplares) {
             if (e.estaDisponivel()) {
-                return e;
-            }
-        }
-        return null;
-    }
-
-    public Exemplar getExemplarEmprestado(Emprestimo emprestimo) {
-        for (Exemplar e : exemplares) {
-            if (e.getEmprestimo().equals(emprestimo)) {
                 return e;
             }
         }
