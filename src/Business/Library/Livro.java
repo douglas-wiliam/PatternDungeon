@@ -47,9 +47,7 @@ public class Livro {
     public void addReserva(Reserva reserva) {
         reservas.add(reserva);
         if (reservas.size() == 2){
-            for (Usuario obs : observadores){
-                obs.notifica();
-            }
+            this.atualizaObservadores();
         }
     }
     
@@ -63,6 +61,12 @@ public class Livro {
             if (codigo.equals(e.getCodigo())) {
                 exemplares.remove(e);
             }
+        }
+    }
+    
+    public void atualizaObservadores(){
+        for (Usuario obs : observadores){
+            obs.notifica();
         }
     }
 
