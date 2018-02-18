@@ -16,6 +16,7 @@ public abstract class Usuario {
 
     protected String nome;
     protected String codigo;
+    protected int notificacoes;
     protected int periodoEmprestimo;
     protected int qtdMaxEmprestimos;
     protected int qtdMaxReservas;
