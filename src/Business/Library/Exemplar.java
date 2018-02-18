@@ -6,13 +6,16 @@ import Business.Operations.Emprestimo;
  *
  * @author douglas
  */
-public class Exemplar extends Livro {
+public class Exemplar {
 
+    private final String codigo;
     private String status; // "disponivel" ou "emprestado"
     private Emprestimo emprestimo;  // O emprestimo vinculado
+    private final Livro livro;
 
-    public Exemplar(String codigo) {
-        super(codigo);
+    public Exemplar(Livro livro, String codigo) {
+        this.codigo = codigo;
+        this.livro = livro;
     }
 
     public void empresta(Emprestimo emprestimo) {
@@ -25,6 +28,10 @@ public class Exemplar extends Livro {
         emprestimo = null;
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -33,4 +40,7 @@ public class Exemplar extends Livro {
         return emprestimo;
     }
 
+    public Livro getLivro() {
+        return livro;
+    }
 }
