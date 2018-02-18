@@ -3,6 +3,7 @@ package Facade;
 import Commands.Comando;
 import Commands.NoComando;
 import Business.Orders.Pedido;
+import Commands.RealizaCadastroObservadorComando;
 import Commands.RealizaDevolucaoComando;
 import Commands.RealizaEmprestimoComando;
 import Commands.RealizaReservaComando;
@@ -56,6 +57,7 @@ public class Terminal {
                     break;
 
                 case "obs":
+                    comando = new RealizaCadastroObservadorComando(new Pedido(input[1],input[2]));
                     break;
 
                 case "liv":
