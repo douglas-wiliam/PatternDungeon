@@ -31,6 +31,10 @@ public class Exemplar {
     public boolean estaDisponivel() {
         return status.equals("disponivel");
     }
+    
+    public String getCodigoLivro(){
+        return this.livro.getCodigo();
+    }
 
     public String getCodigo() {
         return codigo;
@@ -39,8 +43,25 @@ public class Exemplar {
     public Emprestimo getEmprestimo() {
         return emprestimo;
     }
-
-    public Livro getLivro() {
-        return livro;
+    
+    public String getTitulo() {
+        return this.livro.getTitulo();
     }
+    
+    public String getEditora(){
+        return this.livro.getEditora();
+    }
+    
+    public String getAutores(){
+        return this.livro.getAutores();
+    }
+    
+    public String getEdicao(){
+        return this.livro.getEdicao();
+    }
+    
+    public String getAnoPublicacao(){
+        return this.livro.getAnoPublicacao();
+    }
+    
 }

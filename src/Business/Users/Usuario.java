@@ -1,6 +1,7 @@
 package Business.Users;
 
 import Business.Library.Livro;
+import Business.Library.Exemplar;
 import Business.Operations.Emprestimo;
 import Business.Operations.Reserva;
 import Strategy.TomarEmprestadoBehavior;
@@ -77,5 +78,28 @@ public abstract class Usuario {
     public Reserva getReserva(int index) {
         return reservas.get(index);
     }
-
+    
+    public String consulta(){
+        String output;
+        output = "Nome: " + this.getNome() + "\n";
+        output += "Emprestimos:\n";
+        StringBuilder strBuilder = new StringBuilder(output);
+        for (Emprestimo e : emprestimos){
+            Exemplar exemplar = e.getExemplar();
+            strBuilder.append("\tTitulo: ");
+            strBuilder.append(exemplar.getTitulo());
+            strBuilder.append("\n");
+            strBuilder.append("\tData de emprestimo: ");
+            strBuilder.append(e.getDataCriacao());
+            strBuilder.append("\n");
+            strBuilder.append("\tStatus: ");
+            strBuilder.append(e.getStatus());
+            strBuilder.append("\n");
+            strBuilder.append("\tData de devolucao: ");
+            strBuilder.append(e.getDataDevolucao());
+            strBuilder.append("\n\n"); 
+        }
+        output += "Reservas:\n";
+        return output;
+    }
 }

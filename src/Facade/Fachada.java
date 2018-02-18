@@ -69,4 +69,12 @@ public class Fachada {
         return usuario.reserva(livro);
 
     }
+    
+    public static String realizaConsultaUsuario(String codigoUsuario){
+        Usuario usuario = Biblioteca.buscaUsuario(codigoUsuario);
+        if (usuario == null) {
+            return "Usuário não existe na Biblioteca";
+        }
+        return usuario.consulta();
+    }
 }
