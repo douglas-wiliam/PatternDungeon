@@ -1,5 +1,7 @@
 package Commands;
 
+import Facade.Fachada;
+
 /**
  *
  * @author guilherme
