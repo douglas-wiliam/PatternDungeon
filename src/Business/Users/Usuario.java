@@ -63,6 +63,14 @@ public abstract class Usuario {
             strBuilder.append("\n\n"); 
         }
         output += "Reservas:\n";
+        for (Reserva r : reservas){
+            strBuilder.append("\tTitulo: ");
+            strBuilder.append(r.getTituloExemplar());
+            strBuilder.append("\n");
+            strBuilder.append("\tData de Solicitacao: ");
+            strBuilder.append(r.getDataSolicitacao());
+            strBuilder.append("\n\n"); 
+        }
         return output;
     }
 
