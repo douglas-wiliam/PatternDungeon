@@ -42,6 +42,29 @@ public abstract class Usuario {
 
         return "Insucesso em Operação de Devolução: Não Existe Empréstimo em Aberto para o Livro";
     }
+    
+    public String consulta(){
+        String output;
+        output = "Nome: " + this.getNome() + "\n";
+        output += "Emprestimos:\n";
+        StringBuilder strBuilder = new StringBuilder(output);
+        for (Emprestimo e : emprestimos){
+            strBuilder.append("\tTitulo: ");
+            strBuilder.append(e.getTituloExemplar());
+            strBuilder.append("\n");
+            strBuilder.append("\tData de emprestimo: ");
+            strBuilder.append(e.getDataCriacao());
+            strBuilder.append("\n");
+            strBuilder.append("\tStatus: ");
+            strBuilder.append(e.getStatus());
+            strBuilder.append("\n");
+            strBuilder.append("\tData de devolucao: ");
+            strBuilder.append(e.getDataDevolucao());
+            strBuilder.append("\n\n"); 
+        }
+        output += "Reservas:\n";
+        return output;
+    }
 
     public void addEmprestimo(Emprestimo emprestimo) {
         emprestimos.add(emprestimo);
@@ -77,28 +100,5 @@ public abstract class Usuario {
 
     public Reserva getReserva(int index) {
         return reservas.get(index);
-    }
-    
-    public String consulta(){
-        String output;
-        output = "Nome: " + this.getNome() + "\n";
-        output += "Emprestimos:\n";
-        StringBuilder strBuilder = new StringBuilder(output);
-        for (Emprestimo e : emprestimos){
-            strBuilder.append("\tTitulo: ");
-            strBuilder.append(e.getTituloExemplar());
-            strBuilder.append("\n");
-            strBuilder.append("\tData de emprestimo: ");
-            strBuilder.append(e.getDataCriacao());
-            strBuilder.append("\n");
-            strBuilder.append("\tStatus: ");
-            strBuilder.append(e.getStatus());
-            strBuilder.append("\n");
-            strBuilder.append("\tData de devolucao: ");
-            strBuilder.append(e.getDataDevolucao());
-            strBuilder.append("\n\n"); 
-        }
-        output += "Reservas:\n";
-        return output;
     }
 }
