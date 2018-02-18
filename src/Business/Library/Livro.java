@@ -2,6 +2,7 @@ package Business.Library;
 
 import Business.Operations.Emprestimo;
 import Business.Operations.Reserva;
+import Business.Users.Usuario;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +20,7 @@ public class Livro {
     private ArrayList<Exemplar> exemplares;
     private ArrayList<Emprestimo> emprestimos;
     private ArrayList<Reserva> reservas;
+    private ArrayList<Usuario> observadores;
 
     public Livro(String codigo,
             String titulo,
@@ -44,6 +46,14 @@ public class Livro {
 
     public void addReserva(Reserva reserva) {
         reservas.add(reserva);
+        if (reservas.size() == 2){
+            this.atualizaObservadores();
+        }
+    }
+    
+    public String addObservador(Usuario usuario){
+        observadores.add(usuario);
+        return "Observador Adicionado";
     }
 
     public void removeExemplar(String codigo) {
@@ -51,6 +61,12 @@ public class Livro {
             if (codigo.equals(e.getCodigo())) {
                 exemplares.remove(e);
             }
+        }
+    }
+    
+    public void atualizaObservadores(){
+        for (Usuario obs : observadores){
+            obs.notifica();
         }
     }
 

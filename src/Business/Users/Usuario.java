@@ -15,6 +15,7 @@ public abstract class Usuario {
 
     protected String nome;
     protected String codigo;
+    protected int notificacoes;
     protected int periodoEmprestimo;
     protected int qtdMaxEmprestimos;
     protected int qtdMaxReservas;
@@ -64,13 +65,17 @@ public abstract class Usuario {
         output += "Reservas:\n";
         for (Reserva r : reservas) {
             strBuilder.append("\tTitulo: ");
-            strBuilder.append(r.getTituloExemplar());
+            strBuilder.append(r.getTituloLivro());
             strBuilder.append("\n");
             strBuilder.append("\tData de Solicitacao: ");
             strBuilder.append(r.getDataSolicitacao());
             strBuilder.append("\n\n");
         }
         return output;
+    }
+    
+    public void notifica(){
+        this.notificacoes += 1;
     }
 
     public void addEmprestimo(Emprestimo emprestimo) {

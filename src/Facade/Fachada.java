@@ -77,4 +77,20 @@ public class Fachada {
         }
         return usuario.consulta();
     }
+    
+    public static String realizaCadastroObservador(Pedido pedido){
+        Usuario usuario = Biblioteca.buscaUsuario(pedido.getCodigoUsuario());
+        Livro livro = Biblioteca.buscaLivro(pedido.getCodigoLivro());
+
+        if (usuario == null) {
+            return "Usuário não existe na Biblioteca";
+        }
+
+        if (livro == null) {
+            return "Livro não existe na Biblioteca";
+        }
+        
+        return livro.addObservador(usuario);
+        
+    }
 }

@@ -1,6 +1,6 @@
 package Business.Operations;
 
-import Business.Library.Exemplar;
+import Business.Library.Livro;
 import Business.Users.Usuario;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -10,14 +10,14 @@ import java.time.format.DateTimeFormatter;
  * @author douglas, Guilherme
  */
 public class Reserva {
-    private final Usuario usuario;
-    private final Exemplar exemplar;
-    private String dataSolicitacao;
+    Usuario usuario;
+    Livro livro;
+    String dataSolicitacao;
     
-    public Reserva(Usuario usuario, Exemplar exemplar){
+    public Reserva(Usuario usuario, Livro livro){
         this.registraData();
         this.usuario = usuario;
-        this.exemplar = exemplar;
+        this.livro = livro;
     }
     
     private void registraData() {
@@ -30,12 +30,12 @@ public class Reserva {
         return this.usuario;
     }
     
-    public Exemplar getExemplar(){
-        return this.exemplar;
+    public Livro getLivro(){
+        return this.livro;
     }
     
-    public String getTituloExemplar(){
-        return this.exemplar.getTitulo();
+    public String getTituloLivro(){
+        return this.livro.getTitulo();
     }
     
     public String getDataSolicitacao(){
