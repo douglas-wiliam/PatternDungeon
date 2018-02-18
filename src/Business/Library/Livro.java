@@ -20,12 +20,12 @@ public class Livro {
     private ArrayList<Emprestimo> emprestimos;
     private ArrayList<Reserva> reservas;
 
-    public Livro(String codigo, 
-                 String titulo, 
-                 String editora, 
-                 String autores,
-                 String edicao,
-                 String anoPublicacao) {
+    public Livro(String codigo,
+            String titulo,
+            String editora,
+            String autores,
+            String edicao,
+            String anoPublicacao) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.editora = editora;
@@ -54,27 +54,36 @@ public class Livro {
         }
     }
 
+    public boolean temExemplarDisponivel() {
+        for (Exemplar e : exemplares) {
+            if (e.estaDisponivel()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String getCodigo() {
         return codigo;
     }
-    
-    public String getTitulo(){
+
+    public String getTitulo() {
         return this.titulo;
     }
-    
-    public String getEditora(){
+
+    public String getEditora() {
         return this.editora;
     }
-    
-    public String getAutores(){
+
+    public String getAutores() {
         return this.autores;
     }
-    
-    public String getEdicao(){
+
+    public String getEdicao() {
         return this.edicao;
     }
-    
-    public String getAnoPublicacao(){
+
+    public String getAnoPublicacao() {
         return this.anoPublicacao;
     }
 
