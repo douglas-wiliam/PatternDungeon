@@ -4,6 +4,7 @@ import Commands.Comando;
 import Commands.NoComando;
 import Business.Orders.Pedido;
 import Commands.RealizaCadastroObservadorComando;
+import Commands.RealizaCheckNotificacoesComando;
 import Commands.RealizaDevolucaoComando;
 import Commands.RealizaEmprestimoComando;
 import Commands.RealizaReservaComando;
@@ -68,6 +69,7 @@ public class Terminal {
                     break;
 
                 case "ntf":
+                    comando = new RealizaCheckNotificacoesComando(input[1]);
                     break;
 
                 default:
