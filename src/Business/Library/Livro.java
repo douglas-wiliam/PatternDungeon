@@ -22,12 +22,12 @@ public class Livro {
     private ArrayList<Reserva> reservas;
     private ArrayList<Usuario> observadores;
 
-    public Livro(String codigo, 
-                 String titulo, 
-                 String editora, 
-                 String autores,
-                 String edicao,
-                 String anoPublicacao) {
+    public Livro(String codigo,
+            String titulo,
+            String editora,
+            String autores,
+            String edicao,
+            String anoPublicacao) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.editora = editora;
@@ -70,27 +70,45 @@ public class Livro {
         }
     }
 
+    public boolean temExemplarDisponivel() {
+        for (Exemplar e : exemplares) {
+            if (e.estaDisponivel()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean temEmprestimo(Emprestimo emprestimo) {
+        for (Exemplar e : exemplares) {
+            if (e.getEmprestimo().equals(emprestimo)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String getCodigo() {
         return codigo;
     }
-    
-    public String getTitulo(){
+
+    public String getTitulo() {
         return this.titulo;
     }
-    
-    public String getEditora(){
+
+    public String getEditora() {
         return this.editora;
     }
-    
-    public String getAutores(){
+
+    public String getAutores() {
         return this.autores;
     }
-    
-    public String getEdicao(){
+
+    public String getEdicao() {
         return this.edicao;
     }
-    
-    public String getAnoPublicacao(){
+
+    public String getAnoPublicacao() {
         return this.anoPublicacao;
     }
 
@@ -105,15 +123,6 @@ public class Livro {
     public Exemplar getExemplarDisponivel() {
         for (Exemplar e : exemplares) {
             if (e.estaDisponivel()) {
-                return e;
-            }
-        }
-        return null;
-    }
-
-    public Exemplar getExemplarEmprestado(Emprestimo emprestimo) {
-        for (Exemplar e : exemplares) {
-            if (e.getEmprestimo().equals(emprestimo)) {
                 return e;
             }
         }

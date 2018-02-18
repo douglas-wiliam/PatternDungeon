@@ -11,11 +11,11 @@ import java.time.format.DateTimeFormatter;
  */
 public class Emprestimo {
 
-    Usuario usuario;
-    Exemplar exemplar;
-    String dataCriacao;
-    String dataDevolucao;
-    String status;  // "emCurso" ou "finalizado"
+    private final Usuario usuario;
+    private final Exemplar exemplar;
+    private String dataCriacao;
+    private String dataDevolucao;
+    private String status;  // "emCurso" ou "finalizado"
 
     public Emprestimo(Usuario usuario, Exemplar exemplar) {
         this.usuario = usuario;
@@ -57,12 +57,16 @@ public class Emprestimo {
         return usuario;
     }
 
-    public Exemplar getExemplar() {
-        return exemplar;
+    public String getCodigoExemplar() {
+        return exemplar.getCodigo();
     }
-    
-    public String getTituloExemplar(){
+
+    public String getTituloExemplar() {
         return exemplar.getTitulo();
+    }
+
+    public String getCodigoLivro() {
+        return exemplar.getCodigoLivro();
     }
 
     public String getDataCriacao() {
