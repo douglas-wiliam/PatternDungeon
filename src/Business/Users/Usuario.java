@@ -93,6 +93,10 @@ public abstract class Usuario {
     public String getCodigo() {
         return codigo;
     }
+    
+    public String getNotificacoes(){
+        return String.valueOf(this.notificacoes);
+    }
 
     public int getPeriodoEmprestimo() {
         return periodoEmprestimo;
