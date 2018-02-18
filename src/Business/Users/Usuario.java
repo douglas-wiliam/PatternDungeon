@@ -1,7 +1,6 @@
 package Business.Users;
 
 import Business.Library.Livro;
-import Business.Library.Exemplar;
 import Business.Operations.Emprestimo;
 import Business.Operations.Reserva;
 import Strategy.TomarEmprestadoBehavior;
