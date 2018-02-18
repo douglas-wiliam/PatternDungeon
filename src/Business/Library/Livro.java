@@ -53,8 +53,9 @@ public class Livro {
         }
     }
     
-    public void addObservador(Usuario usuario){
+    public String addObservador(Usuario usuario){
         observadores.add(usuario);
+        return "Observador Adicionado";
     }
 
     public void removeExemplar(String codigo) {
