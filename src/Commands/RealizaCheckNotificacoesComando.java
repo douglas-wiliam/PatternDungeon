@@ -13,6 +13,7 @@ public class RealizaCheckNotificacoesComando implements Comando{
         this.codigoUsuario = codigoUsuario;
     }
     
+    @Override
     public String execute(){
         return Fachada.realizaCheckNotificacoes(codigoUsuario);
     }
