@@ -41,13 +41,13 @@ public abstract class Usuario {
 
         return "Insucesso em Operação de Devolução: Não Existe Empréstimo em Aberto para o Livro";
     }
-    
-    public String consulta(){
+
+    public String consulta() {
         String output;
         output = "Nome: " + this.getNome() + "\n";
         output += "Emprestimos:\n";
         StringBuilder strBuilder = new StringBuilder(output);
-        for (Emprestimo e : emprestimos){
+        for (Emprestimo e : emprestimos) {
             strBuilder.append("\tTitulo: ");
             strBuilder.append(e.getTituloExemplar());
             strBuilder.append("\n");
@@ -59,16 +59,16 @@ public abstract class Usuario {
             strBuilder.append("\n");
             strBuilder.append("\tData de devolucao: ");
             strBuilder.append(e.getDataDevolucao());
-            strBuilder.append("\n\n"); 
+            strBuilder.append("\n\n");
         }
         output += "Reservas:\n";
-        for (Reserva r : reservas){
+        for (Reserva r : reservas) {
             strBuilder.append("\tTitulo: ");
             strBuilder.append(r.getTituloExemplar());
             strBuilder.append("\n");
             strBuilder.append("\tData de Solicitacao: ");
             strBuilder.append(r.getDataSolicitacao());
-            strBuilder.append("\n\n"); 
+            strBuilder.append("\n\n");
         }
         return output;
     }
@@ -79,6 +79,15 @@ public abstract class Usuario {
 
     public void addReserva(Reserva reserva) {
         reservas.add(reserva);
+    }
+
+    public boolean temLivroEmprestado(Livro livro) {
+        for (Emprestimo e : emprestimos) {
+            if (e.estaAberto() && e.getCodigoLivro().equals(livro.getCodigo())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public String getNome() {
