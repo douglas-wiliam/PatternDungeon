@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Livro {
 
-    protected String codigo;
+    private final String codigo;
     private ArrayList<Exemplar> exemplares;
     private ArrayList<Emprestimo> emprestimos;
     private ArrayList<Reserva> reservas;
@@ -19,8 +19,8 @@ public class Livro {
         this.codigo = codigo;
     }
 
-    public void addExemplar(Exemplar exemplar) {
-        exemplares.add(exemplar);
+    public void addExemplar(String codigo) {
+        exemplares.add(new Exemplar(this, codigo));
     }
 
     public void addEmprestimo(Emprestimo emprestimo) {
@@ -31,24 +31,24 @@ public class Livro {
         reservas.add(reserva);
     }
 
-    public void removeExemplar(Exemplar exemplar) {
-        exemplares.remove(exemplar);
+    public void removeExemplar(String codigo) {
+        for (Exemplar e : exemplares) {
+            if (codigo.equals(e.getCodigo())) {
+                exemplares.remove(e);
+            }
+        }
     }
 
     public String getCodigo() {
         return codigo;
     }
 
-    public ArrayList<Exemplar> getExemplares() {
-        return exemplares;
+    public Emprestimo getEmprestimo(int index) {
+        return emprestimos.get(index);
     }
 
-    public ArrayList<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public ArrayList<Emprestimo> getEmprestimos() {
-        return emprestimos;
+    public Reserva getReserva(int index) {
+        return reservas.get(index);
     }
 
     public Exemplar getExemplarDisponivel() {
