@@ -60,6 +60,10 @@ public class Emprestimo {
     public Exemplar getExemplar() {
         return exemplar;
     }
+    
+    public String getTituloExemplar(){
+        return exemplar.getTitulo();
+    }
 
     public String getDataCriacao() {
         return dataCriacao;
