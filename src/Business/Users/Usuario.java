@@ -65,7 +65,7 @@ public abstract class Usuario {
         output += "Reservas:\n";
         for (Reserva r : reservas){
             strBuilder.append("\tTitulo: ");
-            strBuilder.append(r.getTituloExemplar());
+            strBuilder.append(r.getTituloLivro());
             strBuilder.append("\n");
             strBuilder.append("\tData de Solicitacao: ");
             strBuilder.append(r.getDataSolicitacao());
