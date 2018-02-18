@@ -93,4 +93,13 @@ public class Fachada {
         return livro.addObservador(usuario);
         
     }
+    
+    public static String realizaCheckNotificacoes(String codigoUsuario){
+        Usuario usuario = Biblioteca.buscaUsuario(codigoUsuario);
+        if (usuario == null) {
+            return "Usuário não existe na Biblioteca";
+        }
+        
+        return usuario.getNotificacoes();
+    }
 }
