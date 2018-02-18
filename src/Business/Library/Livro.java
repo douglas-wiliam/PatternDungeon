@@ -11,12 +11,27 @@ import java.util.ArrayList;
 public class Livro {
 
     private final String codigo;
+    private final String titulo;
+    private final String editora;
+    private final String autores;
+    private final String edicao;
+    private final String anoPublicacao;
     private ArrayList<Exemplar> exemplares;
     private ArrayList<Emprestimo> emprestimos;
     private ArrayList<Reserva> reservas;
 
-    public Livro(String codigo) {
+    public Livro(String codigo, 
+                 String titulo, 
+                 String editora, 
+                 String autores,
+                 String edicao,
+                 String anoPublicacao) {
         this.codigo = codigo;
+        this.titulo = titulo;
+        this.editora = editora;
+        this.autores = autores;
+        this.edicao = edicao;
+        this.anoPublicacao = anoPublicacao;
     }
 
     public void addExemplar(String codigo) {
@@ -41,6 +56,26 @@ public class Livro {
 
     public String getCodigo() {
         return codigo;
+    }
+    
+    public String getTitulo(){
+        return this.titulo;
+    }
+    
+    public String getEditora(){
+        return this.editora;
+    }
+    
+    public String getAutores(){
+        return this.autores;
+    }
+    
+    public String getEdicao(){
+        return this.edicao;
+    }
+    
+    public String getAnoPublicacao(){
+        return this.anoPublicacao;
     }
 
     public Emprestimo getEmprestimo(int index) {

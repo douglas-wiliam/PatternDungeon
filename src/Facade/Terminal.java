@@ -6,6 +6,7 @@ import Business.Orders.Pedido;
 import Commands.RealizaDevolucaoComando;
 import Commands.RealizaEmprestimoComando;
 import Commands.RealizaReservaComando;
+import Commands.RealizaConsultaUsuarioComando;
 import java.util.Scanner;
 
 /**
@@ -61,6 +62,7 @@ public class Terminal {
                     break;
 
                 case "usu":
+                    comando = new RealizaConsultaUsuarioComando(input[1]);
                     break;
 
                 case "ntf":
