@@ -57,8 +57,8 @@ public class Emprestimo {
         return usuario;
     }
 
-    public Exemplar getExemplar() {
-        return exemplar;
+    public String getCodigoExemplar() {
+        return exemplar.getCodigo();
     }
 
     public String getTituloExemplar() {
