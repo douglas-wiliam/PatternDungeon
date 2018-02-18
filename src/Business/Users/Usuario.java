@@ -33,7 +33,7 @@ public abstract class Usuario {
 
     public String devolve(Livro livro) {
         for (Emprestimo e : emprestimos) {
-            if (livro.getExemplarEmprestado(e) != null) {
+            if (e.estaAberto()  && livro.temEmprestimo(e)) {
                 e.fechaEmprestimo();
                 return "Sucesso em Operação de Devolução";
             }
