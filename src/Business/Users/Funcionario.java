@@ -1,6 +1,7 @@
 package Business.Users;
 
 import Strategy.AlunoTomarEmprestado;
+import Strategy.UsuarioReservar;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +17,7 @@ public class Funcionario extends Usuario {
         qtdMaxEmprestimos = 3;
         qtdMaxReservas = 3;
         tomarEmprestado = new AlunoTomarEmprestado();
+        reservar = new UsuarioReservar();
         emprestimos = new ArrayList();
         reservas = new ArrayList();
     }

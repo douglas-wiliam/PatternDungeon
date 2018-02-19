@@ -1,4 +1,4 @@
-package Commands;
+package Command;
 
 import Business.Orders.Pedido;
 import Facade.Fachada;
@@ -7,17 +7,17 @@ import Facade.Fachada;
  *
  * @author douglas
  */
-public class RealizaEmprestimoComando implements Comando {
+public class RealizaDevolucaoComando implements Comando {
 
     private final Pedido pedido;
 
-    public RealizaEmprestimoComando(Pedido pedido) {
+    public RealizaDevolucaoComando(Pedido pedido) {
         this.pedido = pedido;
     }
 
     @Override
     public String execute() {
-        return Fachada.realizaEmprestimo(pedido);
+        return Fachada.realizaDevolucao(pedido);
     }
 
 }

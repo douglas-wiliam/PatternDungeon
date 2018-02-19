@@ -31,6 +31,40 @@ public class Livro implements Sujeito {
         this.autores = autores;
         this.edicao = edicao;
         this.anoPublicacao = ano;
+        this.reservas = new ArrayList();
+        this.observadores = new ArrayList();
+        this.emprestimos = new ArrayList();
+        this.exemplares = new ArrayList();
+    }
+
+    public String consulta() {
+        int quantidadeReservas = this.getQtdReservas();
+        int quantidadeExemplares = this.getExemplares().size();
+        String output;
+
+        output = "Titulo: " + this.getTitulo() + " \n";
+        output += "\tReservas: " + quantidadeReservas + " \n";
+        if (quantidadeReservas > 0) {
+            output += "\tReservado por: ";
+            for (Reserva r : this.getReservas()) {
+                output += r.getUsuario().getNome() + ", ";
+            }
+            output += "\n\n";
+        }
+
+        output += "\tExemplares:\n";
+        if (quantidadeExemplares > 0) {
+            for (Exemplar e : this.getExemplares()) {
+                if ("disponivel".equals(e.getStatus())) {
+                    output += "\t[" + e.getCodigo() + "]" + " - " + e.getStatus();
+                } else {
+                    output += "\t[" + e.getCodigo() + "] - " + e.getEmprestimo().toString();
+                }
+                output += "\n";
+            }
+        }
+
+        return output;
     }
 
     public void addExemplar(String codigo) {
@@ -43,12 +77,12 @@ public class Livro implements Sujeito {
 
     public void addReserva(Reserva reserva) {
         reservas.add(reserva);
-        if (reservas.size() == 2){
+        if (reservas.size() == 2) {
             this.atualizaObservadores();
         }
     }
-    
-    public String addObservador(Usuario usuario){
+
+    public String addObservador(Usuario usuario) {
         observadores.add(usuario);
         return "Observador Adicionado";
     }
@@ -60,10 +94,22 @@ public class Livro implements Sujeito {
             }
         }
     }
-    
+
+    public void fechaReserva(Usuario usuario) {
+        Reserva res = null;
+        for (Reserva r : reservas) {
+            if (r.getUsuario() == usuario) {
+                res = r;
+            }
+        }
+        if (res != null) {
+            reservas.remove(res);
+        }
+    }
+
     @Override
-    public void atualizaObservadores(){
-        for (Usuario obs : observadores){
+    public void atualizaObservadores() {
+        for (Usuario obs : observadores) {
             obs.notifica();
         }
     }
@@ -79,8 +125,10 @@ public class Livro implements Sujeito {
 
     public boolean temEmprestimo(Emprestimo emprestimo) {
         for (Exemplar e : exemplares) {
-            if (e.getEmprestimo().equals(emprestimo)) {
-                return true;
+            if (e.getEmprestimo() != null) {
+                if (e.getEmprestimo().equals(emprestimo)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -117,11 +165,11 @@ public class Livro implements Sujeito {
     public Reserva getReserva(int index) {
         return reservas.get(index);
     }
-    
+
     public ArrayList<Reserva> getReservas() {
         return this.reservas;
     }
-    
+
     public ArrayList<Exemplar> getExemplares() {
         return this.exemplares;
     }
@@ -134,41 +182,22 @@ public class Livro implements Sujeito {
         }
         return null;
     }
-    
-    public String consulta() {
-        int quantidadeReservas = this.getReservas().size();
-        int quantidadeExemplares = this.getExemplares().size();
-        String output;
-        
-        output  = "------ LIVRO ------\n";
-        output += "Titulo: " + this.getTitulo() + " \n";
-        output += "Reservas: " + quantidadeReservas + " \n";
-        output += "\n";
-        
-        output += "----- RESERVAS -----\n";
-        output += "Quantidade: " + quantidadeReservas;
-        
-        if(quantidadeReservas > 0) {
-            output += "Usuários: ";
-            for(Reserva r : this.getReservas()) {
-                output += r.getUsuario().getNome() + ", ";
-            }
-            output += "\n\n";
+
+    public int getQtdReservas() {
+        if (reservas.isEmpty()) {
+            return 0;
         }
-            
-        output += "---- EXEMPLARES ----\n";
-        if(quantidadeExemplares > 0) {
-            for(Exemplar e : this.getExemplares()) {
-                if("disponivel".equals(e.getStatus())) {
-                    output += "[" + e.getLivro().getCodigo() + "]" + " - " + e.getStatus();
-                } else {
-                    output += e.getLivro().getCodigo() + " - " + e.getEmprestimo().toString();
-                }
-                output += "\n\n";
+        return reservas.size();
+    }
+
+    public int getQtdExemplaresDisponiveis() {
+        int cont = 0;
+        for (Exemplar e : exemplares) {
+            if (e.estaDisponivel()) {
+                cont++;
             }
         }
-        
-        return output;
+        return cont;
     }
 
     public void setExemplares(ArrayList<Exemplar> exemplares) {

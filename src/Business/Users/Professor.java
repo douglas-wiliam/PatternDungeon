@@ -1,6 +1,7 @@
 package Business.Users;
 
 import Strategy.ProfessorTomarEmprestado;
+import Strategy.UsuarioReservar;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +17,7 @@ public class Professor extends Usuario {
         qtdMaxEmprestimos = 1000;   // Professores nao tem limites de emprestimo
         qtdMaxReservas = 3;
         tomarEmprestado = new ProfessorTomarEmprestado();
+        reservar = new UsuarioReservar();
         emprestimos = new ArrayList();
         reservas = new ArrayList();
     }

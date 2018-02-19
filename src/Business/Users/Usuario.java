@@ -6,13 +6,15 @@ import Business.Operations.Reserva;
 import Observer.Observador;
 import Strategy.TomarEmprestadoBehavior;
 import Strategy.ReservarBehavior;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
  *
  * @author douglas
  */
-public abstract class Usuario implements Observador{
+public abstract class Usuario implements Observador {
 
     protected String nome;
     protected String codigo;
@@ -29,13 +31,25 @@ public abstract class Usuario implements Observador{
         return tomarEmprestado.tomarEmprestado(this, livro);
     }
 
-    public String reserva(Livro livro) {
+    public String reservar(Livro livro) {
         return reservar.reservar(this, livro);
+    }
+
+    public void fechaReserva(Livro livro) {
+        Reserva res = null;
+        for (Reserva r : reservas) {
+            if (r.getLivro() == livro) {
+                res = r;
+            }
+        }
+        if (res != null){
+            reservas.remove(res);
+        }
     }
 
     public String devolve(Livro livro) {
         for (Emprestimo e : emprestimos) {
-            if (e.estaAberto()  && livro.temEmprestimo(e)) {
+            if (e.estaAberto() && livro.temEmprestimo(e)) {
                 e.fechaEmprestimo();
                 return "Sucesso em Operação de Devolução";
             }
@@ -48,35 +62,22 @@ public abstract class Usuario implements Observador{
         String output;
         output = "Nome: " + this.getNome() + "\n";
         output += "Emprestimos:\n";
-        StringBuilder strBuilder = new StringBuilder(output);
         for (Emprestimo e : emprestimos) {
-            strBuilder.append("\tTitulo: ");
-            strBuilder.append(e.getTituloExemplar());
-            strBuilder.append("\n");
-            strBuilder.append("\tData de emprestimo: ");
-            strBuilder.append(e.getDataCriacao());
-            strBuilder.append("\n");
-            strBuilder.append("\tStatus: ");
-            strBuilder.append(e.getStatus());
-            strBuilder.append("\n");
-            strBuilder.append("\tData de devolucao: ");
-            strBuilder.append(e.getDataDevolucao());
-            strBuilder.append("\n\n");
+            output += "\tTitulo: "+e.getTituloExemplar()+"\n";
+            output += "\tData de emprestimo: "+e.getDataCriacao()+"\n";
+            output += "\tStatus: "+e.getStatus()+"\n";
+            output += "\tData de devolucao: "+e.getDataDevolucao()+"\n\n";
         }
         output += "Reservas:\n";
         for (Reserva r : reservas) {
-            strBuilder.append("\tTitulo: ");
-            strBuilder.append(r.getTituloLivro());
-            strBuilder.append("\n");
-            strBuilder.append("\tData de Solicitacao: ");
-            strBuilder.append(r.getDataSolicitacao());
-            strBuilder.append("\n\n");
+            output += "\tTitulo: "+r.getTituloLivro()+"\n";
+            output += "\tData de Solicitacao: "+r.getDataSolicitacao()+"\n\n";
         }
         return output;
     }
-    
+
     @Override
-    public void notifica(){
+    public void notifica() {
         this.notificacoes += 1;
     }
 
@@ -88,9 +89,50 @@ public abstract class Usuario implements Observador{
         reservas.add(reserva);
     }
 
+    private LocalDate geraDataAtual() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataAtual = LocalDate.now();
+
+        return dataAtual;
+    }
+
+    public boolean estaDevedor() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        LocalDate dataAtual = geraDataAtual();
+        LocalDate dataDevolucao;
+
+        for (Emprestimo e : emprestimos) {
+            if (e.estaAberto()) {
+                dataDevolucao = LocalDate.parse(e.getDataDevolucao(), dtf);
+                if (dataDevolucao.isBefore(dataAtual)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public boolean temLivroEmprestado(Livro livro) {
         for (Emprestimo e : emprestimos) {
             if (e.estaAberto() && e.getCodigoLivro().equals(livro.getCodigo())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean temLivroReservado(Livro livro) {
+        for (Reserva r : reservas) {
+            if (r.getCodigoLivro().equals(livro.getCodigo())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean temReservaLivro(Livro livro) {
+        for (Reserva r : reservas) {
+            if (livro == r.getLivro()) {
                 return true;
             }
         }
@@ -104,8 +146,8 @@ public abstract class Usuario implements Observador{
     public String getCodigo() {
         return codigo;
     }
-    
-    public String getNotificacoes(){
+
+    public String getNotificacoes() {
         return String.valueOf(this.notificacoes);
     }
 
@@ -117,7 +159,15 @@ public abstract class Usuario implements Observador{
         return qtdMaxEmprestimos;
     }
 
+    public int getQtdEmprestimos() {
+        return emprestimos.size();
+    }
+
     public int getQtdMaxReservas() {
         return qtdMaxReservas;
+    }
+
+    public int getQtdReservas() {
+        return reservas.size();
     }
 }

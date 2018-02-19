@@ -1,5 +1,5 @@
 
-package Commands;
+package Command;
 
 import Business.Orders.Pedido;
 import Facade.Fachada;
