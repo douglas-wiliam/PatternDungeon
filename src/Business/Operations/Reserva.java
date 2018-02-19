@@ -39,6 +39,10 @@ public class Reserva {
         return this.livro.getTitulo();
     }
     
+    public String getCodigoLivro(){
+        return this.livro.getCodigo();
+    }
+    
     public String getDataSolicitacao(){
         return this.dataSolicitacao;
     }
