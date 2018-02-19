@@ -58,29 +58,16 @@ public abstract class Usuario implements Observador {
         String output;
         output = "Nome: " + this.getNome() + "\n";
         output += "Emprestimos:\n";
-        StringBuilder strBuilder = new StringBuilder(output);
         for (Emprestimo e : emprestimos) {
-            strBuilder.append("\tTitulo: ");
-            strBuilder.append(e.getTituloExemplar());
-            strBuilder.append("\n");
-            strBuilder.append("\tData de emprestimo: ");
-            strBuilder.append(e.getDataCriacao());
-            strBuilder.append("\n");
-            strBuilder.append("\tStatus: ");
-            strBuilder.append(e.getStatus());
-            strBuilder.append("\n");
-            strBuilder.append("\tData de devolucao: ");
-            strBuilder.append(e.getDataDevolucao());
-            strBuilder.append("\n\n");
+            output += "\tTitulo: "+e.getTituloExemplar()+"\n";
+            output += "\tData de emprestimo: "+e.getDataCriacao()+"\n";
+            output += "\tStatus: "+e.getStatus()+"\n";
+            output += "\tData de devolucao: "+e.getDataDevolucao()+"\n\n";
         }
         output += "Reservas:\n";
         for (Reserva r : reservas) {
-            strBuilder.append("\tTitulo: ");
-            strBuilder.append(r.getTituloLivro());
-            strBuilder.append("\n");
-            strBuilder.append("\tData de Solicitacao: ");
-            strBuilder.append(r.getDataSolicitacao());
-            strBuilder.append("\n\n");
+            output += "\tTitulo: "+r.getTituloLivro()+"\n";
+            output += "\tData de Solicitacao: "+r.getDataSolicitacao()+"\n\n";
         }
         return output;
     }
