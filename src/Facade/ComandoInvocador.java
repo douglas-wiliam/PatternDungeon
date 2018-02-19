@@ -1,6 +1,6 @@
 package Facade;
 
-import Commands.Comando;
+import Command.Comando;
 
 /**
  *

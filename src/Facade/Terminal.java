@@ -1,16 +1,16 @@
 package Facade;
 
-import Commands.Comando;
-import Commands.NoComando;
+import Command.Comando;
+import Command.NoComando;
 import Business.Orders.Pedido;
-import Commands.IniciarBibliotecaComando;
-import Commands.RealizaCadastroObservadorComando;
-import Commands.RealizaCheckNotificacoesComando;
-import Commands.RealizaDevolucaoComando;
-import Commands.RealizaEmprestimoComando;
-import Commands.RealizaReservaComando;
-import Commands.RealizaConsultaUsuarioComando;
-import Commands.RealizaConsultaLivroComando;
+import Command.IniciarBibliotecaComando;
+import Command.RealizaCadastroObservadorComando;
+import Command.RealizaCheckNotificacoesComando;
+import Command.RealizaDevolucaoComando;
+import Command.RealizaEmprestimoComando;
+import Command.RealizaReservaComando;
+import Command.RealizaConsultaUsuarioComando;
+import Command.RealizaConsultaLivroComando;
 import java.util.Scanner;
 
 /**
