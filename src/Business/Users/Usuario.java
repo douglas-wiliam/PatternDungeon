@@ -160,7 +160,13 @@ public abstract class Usuario implements Observador {
     }
 
     public int getQtdEmprestimos() {
-        return emprestimos.size();
+        int Qtd = 0;
+        for (Emprestimo e : emprestimos){
+            if (e.estaAberto()){
+                Qtd += 1;
+            }
+        }
+        return Qtd;
     }
 
     public int getQtdMaxReservas() {
