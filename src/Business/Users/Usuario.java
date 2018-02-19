@@ -3,6 +3,7 @@ package Business.Users;
 import Business.Library.Livro;
 import Business.Operations.Emprestimo;
 import Business.Operations.Reserva;
+import Observer.Observador;
 import Strategy.TomarEmprestadoBehavior;
 import Strategy.ReservarBehavior;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author douglas
  */
-public abstract class Usuario {
+public abstract class Usuario implements Observador{
 
     protected String nome;
     protected String codigo;
@@ -74,6 +75,7 @@ public abstract class Usuario {
         return output;
     }
     
+    @Override
     public void notifica(){
         this.notificacoes += 1;
     }
