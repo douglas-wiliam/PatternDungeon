@@ -29,7 +29,7 @@ public abstract class Usuario implements Observador{
         return tomarEmprestado.tomarEmprestado(this, livro);
     }
 
-    public String reserva(Livro livro) {
+    public String reservar(Livro livro) {
         return reservar.reservar(this, livro);
     }
 
@@ -96,6 +96,15 @@ public abstract class Usuario implements Observador{
         }
         return false;
     }
+    
+    public boolean temReservaLivro(Livro livro){
+        for (Reserva r : reservas){
+            if (livro == r.getLivro()){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public String getNome() {
         return nome;
@@ -119,5 +128,9 @@ public abstract class Usuario implements Observador{
 
     public int getQtdMaxReservas() {
         return qtdMaxReservas;
+    }
+    
+    public int getQtdReservas(){
+        return reservas.size();
     }
 }
