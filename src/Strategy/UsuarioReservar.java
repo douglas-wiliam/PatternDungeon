@@ -18,6 +18,9 @@ public class UsuarioReservar implements ReservarBehavior {
         if (usuario.temReservaLivro(livro)){
             return "Insucesso: Usuario já tem uma reserva desse livro.";
         }
+        if (usuario.temLivroEmprestado(livro)){
+            return "Insucesso: Usuario já tem esse livro.";
+        }
         Reserva reserva = new Reserva(usuario, livro);
         usuario.addReserva(reserva);
         livro.addReserva(reserva);
