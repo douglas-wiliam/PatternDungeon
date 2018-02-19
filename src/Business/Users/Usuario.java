@@ -32,6 +32,14 @@ public abstract class Usuario implements Observador{
     public String reservar(Livro livro) {
         return reservar.reservar(this, livro);
     }
+    
+    public void fechaReserva(Livro livro){
+        for (Reserva r : reservas){
+            if (r.getLivro() == livro){
+                reservas.remove(r);
+            }
+        }
+    }
 
     public String devolve(Livro livro) {
         for (Emprestimo e : emprestimos) {
