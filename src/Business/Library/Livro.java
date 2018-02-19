@@ -61,6 +61,14 @@ public class Livro implements Sujeito {
         }
     }
     
+    public void fechaReserva(Usuario usuario){
+        for (Reserva r : reservas){
+            if (r.getUsuario() == usuario){
+                reservas.remove(r);
+            }
+        }
+    }
+    
     @Override
     public void atualizaObservadores(){
         for (Usuario obs : observadores){
