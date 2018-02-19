@@ -81,12 +81,25 @@ public class Livro implements Sujeito {
             this.atualizaObservadores();
         }
     }
-
+    
+    @Override
     public String addObservador(Usuario usuario) {
         observadores.add(usuario);
         return "Observador Adicionado";
     }
-
+    
+    @Override
+    public String removeObservador(Usuario usuario){
+        Usuario usu = null;
+        for (Usuario u : observadores){
+            if (u == usuario){
+                usu = u;
+            }
+        }
+        observadores.remove(usu);
+        return "Observador removido.";
+    }
+    
     public void removeExemplar(String codigo) {
         for (Exemplar e : exemplares) {
             if (codigo.equals(e.getCodigo())) {
