@@ -116,6 +116,6 @@ public class Fachada {
             return "Usuário não existe na Biblioteca";
         }
         
-        return usuario.getNotificacoes();
+        return "Notificações: "+ usuario.getNotificacoes();
     }
 }
