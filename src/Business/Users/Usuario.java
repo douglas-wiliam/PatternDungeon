@@ -6,13 +6,15 @@ import Business.Operations.Reserva;
 import Observer.Observador;
 import Strategy.TomarEmprestadoBehavior;
 import Strategy.ReservarBehavior;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
  *
  * @author douglas
  */
-public abstract class Usuario implements Observador{
+public abstract class Usuario implements Observador {
 
     protected String nome;
     protected String codigo;
@@ -35,7 +37,7 @@ public abstract class Usuario implements Observador{
 
     public String devolve(Livro livro) {
         for (Emprestimo e : emprestimos) {
-            if (e.estaAberto()  && livro.temEmprestimo(e)) {
+            if (e.estaAberto() && livro.temEmprestimo(e)) {
                 e.fechaEmprestimo();
                 return "Sucesso em Operação de Devolução";
             }
@@ -74,9 +76,9 @@ public abstract class Usuario implements Observador{
         }
         return output;
     }
-    
+
     @Override
-    public void notifica(){
+    public void notifica() {
         this.notificacoes += 1;
     }
 
@@ -88,9 +90,40 @@ public abstract class Usuario implements Observador{
         reservas.add(reserva);
     }
 
+    private String geraDataAtual() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataLocal = LocalDate.now();
+        
+        String dataAtual = dtf.format(dataLocal);
+        
+        return dataAtual;
+    }
+
+    public boolean estaDevedor() {
+        String dataAtual = geraDataAtual();
+
+        for (Emprestimo e : emprestimos) {
+            if (e.estaAberto()) {
+                e.getDataDevolucao();
+
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean temLivroEmprestado(Livro livro) {
         for (Emprestimo e : emprestimos) {
             if (e.estaAberto() && e.getCodigoLivro().equals(livro.getCodigo())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean temLivroReservado(Livro livro) {
+        for (Reserva r : reservas) {
+            if (r.getCodigoLivro().equals(livro.getCodigo())) {
                 return true;
             }
         }
@@ -104,8 +137,8 @@ public abstract class Usuario implements Observador{
     public String getCodigo() {
         return codigo;
     }
-    
-    public String getNotificacoes(){
+
+    public String getNotificacoes() {
         return String.valueOf(this.notificacoes);
     }
 
@@ -115,6 +148,10 @@ public abstract class Usuario implements Observador{
 
     public int getQtdMaxEmprestimos() {
         return qtdMaxEmprestimos;
+    }
+
+    public int getQtdEmprestimos() {
+        return emprestimos.size();
     }
 
     public int getQtdMaxReservas() {
