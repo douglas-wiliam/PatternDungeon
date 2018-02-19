@@ -31,6 +31,10 @@ public class Livro implements Sujeito {
         this.autores = autores;
         this.edicao = edicao;
         this.anoPublicacao = ano;
+        this.reservas = new ArrayList();
+        this.observadores = new ArrayList();
+        this.emprestimos = new ArrayList();
+        this.exemplares = new ArrayList();
     }
 
     public void addExemplar(String codigo) {
@@ -144,6 +148,9 @@ public class Livro implements Sujeito {
     }
 
     public int getQtdReservas() {
+        if (reservas.isEmpty()){
+            return 0;
+        }
         return reservas.size();
     }
 
@@ -158,7 +165,7 @@ public class Livro implements Sujeito {
     }
 
     public String consulta() {
-        int quantidadeReservas = this.getReservas().size();
+        int quantidadeReservas = this.getQtdReservas();
         int quantidadeExemplares = this.getExemplares().size();
         String output;
 
