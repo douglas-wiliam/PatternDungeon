@@ -37,6 +37,36 @@ public class Livro implements Sujeito {
         this.exemplares = new ArrayList();
     }
 
+    public String consulta() {
+        int quantidadeReservas = this.getQtdReservas();
+        int quantidadeExemplares = this.getExemplares().size();
+        String output;
+
+        output = "Titulo: " + this.getTitulo() + " \n";
+        output += "\tReservas: " + quantidadeReservas + " \n";
+        if (quantidadeReservas > 0) {
+            output += "\tReservado por: ";
+            for (Reserva r : this.getReservas()) {
+                output += r.getUsuario().getNome() + ", ";
+            }
+            output += "\n\n";
+        }
+
+        output += "\tExemplares:\n";
+        if (quantidadeExemplares > 0) {
+            for (Exemplar e : this.getExemplares()) {
+                if ("disponivel".equals(e.getStatus())) {
+                    output += "\t[" + e.getCodigo() + "]" + " - " + e.getStatus();
+                } else {
+                    output += "\t[" + e.getCodigo() + "] - " + e.getEmprestimo().toString();
+                }
+                output += "\n";
+            }
+        }
+
+        return output;
+    }
+
     public void addExemplar(String codigo) {
         exemplares.add(new Exemplar(this, codigo));
     }
@@ -168,36 +198,6 @@ public class Livro implements Sujeito {
             }
         }
         return cont;
-    }
-
-    public String consulta() {
-        int quantidadeReservas = this.getQtdReservas();
-        int quantidadeExemplares = this.getExemplares().size();
-        String output;
-
-        output = "Titulo: " + this.getTitulo() + " \n";
-        output += "\tReservas: " + quantidadeReservas + " \n";
-        if (quantidadeReservas > 0) {
-            output += "\tReservado por: ";
-            for (Reserva r : this.getReservas()) {
-                output += r.getUsuario().getNome() + ", ";
-            }
-            output += "\n\n";
-        }
-
-        output += "\tExemplares:\n";
-        if (quantidadeExemplares > 0) {
-            for (Exemplar e : this.getExemplares()) {
-                if ("disponivel".equals(e.getStatus())) {
-                    output += "\t[" + e.getCodigo() + "]" + " - " + e.getStatus();
-                } else {
-                    output += "\t[" + e.getCodigo() + "] - " + e.getEmprestimo().toString();
-                }
-                output += "\n";
-            }
-        }
-
-        return output;
     }
 
     public void setExemplares(ArrayList<Exemplar> exemplares) {
