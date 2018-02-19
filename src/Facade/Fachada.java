@@ -67,7 +67,22 @@ public class Fachada {
         }
 
         return usuario.reserva(livro);
-
+    }
+    
+    public static String realizaConsultaLivro(Livro livro) {
+        
+        if (livro == null) {
+            return "Livro não existe na Biblioteca";
+        }
+        
+        return livro.consulta();
+    }
+    
+    public static String iniciarBiblioteca() {
+        Biblioteca.preencherUsuarios();
+        Biblioteca.preencherLivros();
+        Biblioteca.preencherExemplares();
+        return "";
     }
     
     public static String realizaConsultaUsuario(String codigoUsuario){

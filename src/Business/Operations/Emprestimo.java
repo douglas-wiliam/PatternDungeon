@@ -80,4 +80,12 @@ public class Emprestimo {
     public String getStatus() {
         return status;
     }
+    
+    @Override
+    public String toString() {
+        return "Emprestado para " + 
+                this.getUsuario().getNome() + " em " +
+                this.getDataCriacao() + " com devolução prevista para " + 
+                this.getDataDevolucao();
+    }
 }

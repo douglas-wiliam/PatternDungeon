@@ -3,12 +3,14 @@ package Facade;
 import Commands.Comando;
 import Commands.NoComando;
 import Business.Orders.Pedido;
+import Commands.IniciarBibliotecaComando;
 import Commands.RealizaCadastroObservadorComando;
 import Commands.RealizaCheckNotificacoesComando;
 import Commands.RealizaDevolucaoComando;
 import Commands.RealizaEmprestimoComando;
 import Commands.RealizaReservaComando;
 import Commands.RealizaConsultaUsuarioComando;
+import Commands.RealizaConsultaLivroComando;
 import java.util.Scanner;
 
 /**
@@ -35,12 +37,14 @@ public class Terminal {
         String[] input;
         String output;
         Comando comando;
+        Comando iniciarBiblioteca = new IniciarBibliotecaComando();
         ComandoInvocador invocador;
-
-        System.out.println("@Biblioteca: ");
-        input = getKeyboardInput();
         comando = new NoComando();
         invocador = new ComandoInvocador();
+        System.out.println("@Biblioteca: ");
+        input = getKeyboardInput();
+
+        invocador.executeCommand(iniciarBiblioteca);
 
         while (!"sai".equals(input[0])) {
             switch (input[0]) {
@@ -62,6 +66,7 @@ public class Terminal {
                     break;
 
                 case "liv":
+                    comando = new RealizaConsultaLivroComando(input[1]);
                     break;
 
                 case "usu":
@@ -84,5 +89,4 @@ public class Terminal {
 
         System.out.println("Usuário saiu do sistema.");
     }
-
 }

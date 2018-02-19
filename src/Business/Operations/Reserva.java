@@ -10,8 +10,9 @@ import java.time.format.DateTimeFormatter;
  * @author douglas, Guilherme
  */
 public class Reserva {
-    private final Usuario usuario;
-    private final Livro livro;
+    
+    protected final Usuario usuario;
+    protected final Livro livro;
     private String dataSolicitacao;
     
     public Reserva(Usuario usuario, Livro livro){
@@ -20,20 +21,20 @@ public class Reserva {
         this.livro = livro;
     }
     
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public Livro getLivro() {
+        return livro;
+    }
+    
     private void registraData() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate dataLocal = LocalDate.now();
         dataSolicitacao = dtf.format(dataLocal);
     }
-    
-    public Usuario getUsuario(){
-        return this.usuario;
-    }
-    
-    public Livro getLivro(){
-        return this.livro;
-    }
-    
+        
     public String getTituloLivro(){
         return this.livro.getTitulo();
     }

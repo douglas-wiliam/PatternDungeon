@@ -17,27 +17,23 @@ public class Livro {
     private final String autores;
     private final String edicao;
     private final String anoPublicacao;
+
     private ArrayList<Exemplar> exemplares;
     private ArrayList<Emprestimo> emprestimos;
     private ArrayList<Reserva> reservas;
     private ArrayList<Usuario> observadores;
 
-    public Livro(String codigo,
-            String titulo,
-            String editora,
-            String autores,
-            String edicao,
-            String anoPublicacao) {
+    public Livro(String codigo, String titulo, String editora, String autores, String edicao, String ano) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.editora = editora;
         this.autores = autores;
         this.edicao = edicao;
-        this.anoPublicacao = anoPublicacao;
+        this.anoPublicacao = ano;
     }
 
     public void addExemplar(String codigo) {
-        exemplares.add(new Exemplar(this, codigo));
+        exemplares.add(new Exemplar(this, codigo, "disponivel"));
     }
 
     public void addEmprestimo(Emprestimo emprestimo) {
@@ -119,6 +115,14 @@ public class Livro {
     public Reserva getReserva(int index) {
         return reservas.get(index);
     }
+    
+    public ArrayList<Reserva> getReservas() {
+        return this.reservas;
+    }
+    
+    public ArrayList<Exemplar> getExemplares() {
+        return this.exemplares;
+    }
 
     public Exemplar getExemplarDisponivel() {
         for (Exemplar e : exemplares) {
@@ -127,5 +131,45 @@ public class Livro {
             }
         }
         return null;
+    }
+    
+    public String consulta() {
+        int quantidadeReservas = this.getReservas().size();
+        int quantidadeExemplares = this.getExemplares().size();
+        String output;
+        
+        output  = "------ LIVRO ------\n";
+        output += "Titulo: " + this.getTitulo() + " \n";
+        output += "Reservas: " + quantidadeReservas + " \n";
+        output += "\n";
+        
+        output += "----- RESERVAS -----\n";
+        output += "Quantidade: " + quantidadeReservas;
+        
+        if(quantidadeReservas > 0) {
+            output += "Usuários: ";
+            for(Reserva r : this.getReservas()) {
+                output += r.getUsuario().getNome() + ", ";
+            }
+            output += "\n\n";
+        }
+            
+        output += "---- EXEMPLARES ----\n";
+        if(quantidadeExemplares > 0) {
+            for(Exemplar e : this.getExemplares()) {
+                if("disponivel".equals(e.getStatus())) {
+                    output += "[" + e.getLivro().getCodigo() + "]" + " - " + e.getStatus();
+                } else {
+                    output += e.getLivro().getCodigo() + " - " + e.getEmprestimo().toString();
+                }
+                output += "\n\n";
+            }
+        }
+        
+        return output;
+    }
+
+    public void setExemplares(ArrayList<Exemplar> exemplares) {
+        this.exemplares = exemplares;
     }
 }
