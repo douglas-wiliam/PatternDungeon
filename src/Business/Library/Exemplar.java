@@ -13,10 +13,10 @@ public class Exemplar {
     private Emprestimo emprestimo;  // O emprestimo vinculado
     private final Livro livro;
     
-    public Exemplar(Livro livro, String codigo, String status) {
+    public Exemplar(Livro livro, String codigo) {
         this.livro = livro;
         this.codigo = codigo;
-        this.status = status;
+        this.status = "disponivel";
     }
 
     public void empresta(Emprestimo emprestimo) {
