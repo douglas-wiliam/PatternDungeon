@@ -13,7 +13,7 @@ public class ProfessorTomarEmprestado implements TomarEmprestadoBehavior {
     @Override
     public String tomarEmprestado(Usuario usuario, Livro livro) {
         if (!livro.temExemplarDisponivel()) {
-            return "Insucesso em Operação de Empréstimo: Exemplar não Disponivel na Bibliteca";
+            return "Insucesso em Operação de Empréstimo: Exemplar não Disponivel na Biblioteca";
         }
 
         if (usuario.temLivroEmprestado(livro)) {
