@@ -45,7 +45,7 @@ public class AlunoTomarEmprestado implements TomarEmprestadoBehavior {
 
         livro.addEmprestimo(emprestimo);
         usuario.addEmprestimo(emprestimo);
-        return "Sucesso em Operação de Empréstimo";
+        return "Sucesso: Livro " + livro.getTitulo() + " emprestado para " + usuario.getNome();
     }
 
 }
