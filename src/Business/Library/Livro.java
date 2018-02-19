@@ -172,32 +172,26 @@ public class Livro implements Sujeito {
         int quantidadeReservas = this.getQtdReservas();
         int quantidadeExemplares = this.getExemplares().size();
         String output;
-
-        output = "------ LIVRO ------\n";
-        output += "Titulo: " + this.getTitulo() + " \n";
-        output += "Reservas: " + quantidadeReservas + " \n";
-        output += "\n";
-
-        output += "----- RESERVAS -----\n";
-        output += "Quantidade: " + quantidadeReservas;
-
+        
+        output = "Titulo: " + this.getTitulo() + " \n";
+        output += "\tReservas: " + quantidadeReservas + " \n";
         if (quantidadeReservas > 0) {
-            output += "Usuários: ";
+            output += "\tReservado por: ";
             for (Reserva r : this.getReservas()) {
                 output += r.getUsuario().getNome() + ", ";
             }
             output += "\n\n";
         }
 
-        output += "---- EXEMPLARES ----\n";
+        output += "\tExemplares:\n";
         if (quantidadeExemplares > 0) {
             for (Exemplar e : this.getExemplares()) {
                 if ("disponivel".equals(e.getStatus())) {
-                    output += "[" + e.getLivro().getCodigo() + "]" + " - " + e.getStatus();
+                    output += "\t[" + e.getCodigo() + "]" + " - " + e.getStatus();
                 } else {
-                    output += e.getLivro().getCodigo() + " - " + e.getEmprestimo().toString();
+                    output += "\t["+e.getCodigo() + "] - " + e.getEmprestimo().toString();
                 }
-                output += "\n\n";
+                output += "\n";
             }
         }
 
