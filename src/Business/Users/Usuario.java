@@ -36,10 +36,14 @@ public abstract class Usuario implements Observador {
     }
 
     public void fechaReserva(Livro livro) {
+        Reserva res = null;
         for (Reserva r : reservas) {
             if (r.getLivro() == livro) {
-                reservas.remove(r);
+                res = r;
             }
+        }
+        if (res != null){
+            reservas.remove(res);
         }
     }
 
