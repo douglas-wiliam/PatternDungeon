@@ -38,7 +38,7 @@ public class Livro implements Sujeito {
     }
 
     public void addExemplar(String codigo) {
-        exemplares.add(new Exemplar(this, codigo, "disponivel"));
+        exemplares.add(new Exemplar(this, codigo));
     }
 
     public void addEmprestimo(Emprestimo emprestimo) {
