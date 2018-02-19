@@ -24,7 +24,7 @@ public class UsuarioReservar implements ReservarBehavior {
         Reserva reserva = new Reserva(usuario, livro);
         usuario.addReserva(reserva);
         livro.addReserva(reserva);
-        return "Sucesso: Livro "+livro.getTitulo()+"reservado para "+usuario.getNome();
+        return "Sucesso: Livro "+livro.getTitulo()+" reservado para "+usuario.getNome();
     }
 
 }
