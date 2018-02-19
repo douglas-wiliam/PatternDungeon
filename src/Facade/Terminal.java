@@ -41,7 +41,7 @@ public class Terminal {
         ComandoInvocador invocador;
         comando = new NoComando();
         invocador = new ComandoInvocador();
-        System.out.println("@Biblioteca: ");
+        System.out.print("@Biblioteca: ");
         input = getKeyboardInput();
 
         invocador.executeCommand(iniciarBiblioteca);
@@ -83,7 +83,7 @@ public class Terminal {
 
             output = invocador.executeCommand(comando);
             System.out.println(output);
-            System.out.println("@Biblioteca: ");
+            System.out.print("@Biblioteca: ");
             input = getKeyboardInput();
         }
 
