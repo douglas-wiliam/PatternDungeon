@@ -66,7 +66,7 @@ public class Fachada {
             return "Livro não existe na Biblioteca";
         }
 
-        return usuario.reserva(livro);
+        return usuario.reservar(livro);
     }
     
     public static String realizaConsultaLivro(String codigoLivro) {
