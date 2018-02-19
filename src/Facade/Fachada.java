@@ -69,7 +69,8 @@ public class Fachada {
         return usuario.reserva(livro);
     }
     
-    public static String realizaConsultaLivro(Livro livro) {
+    public static String realizaConsultaLivro(String codigoLivro) {
+        Livro livro = Biblioteca.buscaLivro(codigoLivro);
         
         if (livro == null) {
             return "Livro não existe na Biblioteca";

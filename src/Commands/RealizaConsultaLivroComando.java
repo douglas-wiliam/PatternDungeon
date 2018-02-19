@@ -10,14 +10,14 @@ import Facade.Fachada;
  */
 public class RealizaConsultaLivroComando implements Comando {
 
-    private final Livro livro;
+    private final String codigoLivro;
 
     public RealizaConsultaLivroComando(String codigoLivro) {
-        this.livro = Biblioteca.buscaLivro(codigoLivro);
+        this.codigoLivro = codigoLivro;
     }
 
     @Override
     public String execute() {
-        return Fachada.realizaConsultaLivro(this.livro);
+        return Fachada.realizaConsultaLivro(codigoLivro);
     }
 }
