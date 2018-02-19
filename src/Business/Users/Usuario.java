@@ -34,10 +34,10 @@ public abstract class Usuario implements Observador {
     public String reservar(Livro livro) {
         return reservar.reservar(this, livro);
     }
-    
-    public void fechaReserva(Livro livro){
-        for (Reserva r : reservas){
-            if (r.getLivro() == livro){
+
+    public void fechaReserva(Livro livro) {
+        for (Reserva r : reservas) {
+            if (r.getLivro() == livro) {
                 reservas.remove(r);
             }
         }
@@ -98,23 +98,24 @@ public abstract class Usuario implements Observador {
         reservas.add(reserva);
     }
 
-    private String geraDataAtual() {
+    private LocalDate geraDataAtual() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate dataLocal = LocalDate.now();
-        
-        String dataAtual = dtf.format(dataLocal);
-        
+        LocalDate dataAtual = LocalDate.now();
+
         return dataAtual;
     }
 
     public boolean estaDevedor() {
-        String dataAtual = geraDataAtual();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        LocalDate dataAtual = geraDataAtual();
+        LocalDate dataDevolucao;
 
         for (Emprestimo e : emprestimos) {
             if (e.estaAberto()) {
-                e.getDataDevolucao();
-
-                return true;
+                dataDevolucao = LocalDate.parse(e.getDataDevolucao(), dtf);
+                if (dataDevolucao.isBefore(dataAtual)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -137,10 +138,10 @@ public abstract class Usuario implements Observador {
         }
         return false;
     }
-    
-    public boolean temReservaLivro(Livro livro){
-        for (Reserva r : reservas){
-            if (livro == r.getLivro()){
+
+    public boolean temReservaLivro(Livro livro) {
+        for (Reserva r : reservas) {
+            if (livro == r.getLivro()) {
                 return true;
             }
         }
@@ -174,8 +175,8 @@ public abstract class Usuario implements Observador {
     public int getQtdMaxReservas() {
         return qtdMaxReservas;
     }
-    
-    public int getQtdReservas(){
+
+    public int getQtdReservas() {
         return reservas.size();
     }
 }
