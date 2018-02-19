@@ -64,19 +64,19 @@ public class Livro implements Sujeito {
             }
         }
     }
-    
-    public void fechaReserva(Usuario usuario){
+
+    public void fechaReserva(Usuario usuario) {
         Reserva res = null;
-        for (Reserva r : reservas){
-            if (r.getUsuario() == usuario){
+        for (Reserva r : reservas) {
+            if (r.getUsuario() == usuario) {
                 res = r;
             }
         }
-        if (res != null){
+        if (res != null) {
             reservas.remove(res);
         }
     }
-    
+
     @Override
     public void atualizaObservadores() {
         for (Usuario obs : observadores) {
@@ -95,8 +95,10 @@ public class Livro implements Sujeito {
 
     public boolean temEmprestimo(Emprestimo emprestimo) {
         for (Exemplar e : exemplares) {
-            if (e.getEmprestimo().equals(emprestimo)) {
-                return true;
+            if (e.getEmprestimo() != null) {
+                if (e.getEmprestimo().equals(emprestimo)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -152,7 +154,7 @@ public class Livro implements Sujeito {
     }
 
     public int getQtdReservas() {
-        if (reservas.isEmpty()){
+        if (reservas.isEmpty()) {
             return 0;
         }
         return reservas.size();
@@ -172,7 +174,7 @@ public class Livro implements Sujeito {
         int quantidadeReservas = this.getQtdReservas();
         int quantidadeExemplares = this.getExemplares().size();
         String output;
-        
+
         output = "Titulo: " + this.getTitulo() + " \n";
         output += "\tReservas: " + quantidadeReservas + " \n";
         if (quantidadeReservas > 0) {
@@ -189,7 +191,7 @@ public class Livro implements Sujeito {
                 if ("disponivel".equals(e.getStatus())) {
                     output += "\t[" + e.getCodigo() + "]" + " - " + e.getStatus();
                 } else {
-                    output += "\t["+e.getCodigo() + "] - " + e.getEmprestimo().toString();
+                    output += "\t[" + e.getCodigo() + "] - " + e.getEmprestimo().toString();
                 }
                 output += "\n";
             }
