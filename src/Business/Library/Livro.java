@@ -3,13 +3,14 @@ package Business.Library;
 import Business.Operations.Emprestimo;
 import Business.Operations.Reserva;
 import Business.Users.Usuario;
+import Observer.Sujeito;
 import java.util.ArrayList;
 
 /**
  *
  * @author douglas
  */
-public class Livro {
+public class Livro implements Sujeito {
 
     private final String codigo;
     private final String titulo;
@@ -60,6 +61,7 @@ public class Livro {
         }
     }
     
+    @Override
     public void atualizaObservadores(){
         for (Usuario obs : observadores){
             obs.notifica();
