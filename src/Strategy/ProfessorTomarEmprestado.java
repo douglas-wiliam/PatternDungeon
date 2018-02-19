@@ -19,7 +19,12 @@ public class ProfessorTomarEmprestado implements TomarEmprestadoBehavior {
         if (usuario.temLivroEmprestado(livro)) {
             return "Insucesso em Operação de Empréstimo: Usuário possui empréstimo em aberto do livro";
         }
-        
+
+        if (usuario.temLivroReservado(livro)) {
+            usuario.fechaReserva(livro);
+            livro.fechaReserva(usuario);
+        }
+
         Emprestimo emprestimo = new Emprestimo(usuario, livro.getExemplarDisponivel());
         emprestimo.abreEmprestimo();
 
